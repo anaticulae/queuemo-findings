@@ -32,3 +32,6 @@ class CachedResult:
 
     def __getitem__(self, index):
         return self.findings[index]  # pylint:disable=E1136
+
+
+CachedResults = typing.List[CachedResult]

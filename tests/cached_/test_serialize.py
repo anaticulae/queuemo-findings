@@ -16,3 +16,8 @@ def test_dump_and_load_document():
 
     loaded = cached.loads(dumped)
     assert loaded == data
+
+
+def test_load_root(example):
+    loaded = cached.load_root(example)
+    assert len(loaded) == 7
