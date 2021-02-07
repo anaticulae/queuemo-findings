@@ -32,3 +32,19 @@ def test_load_root_filter(example):
 
     loaded = cached.load_root(example, version='1.1.1')
     assert len(loaded) == 2
+
+
+def test_dump_load_result(testdir):
+    data = cached.CachedResult(
+        document='helm',
+        version='1.1.1',
+        config='easy',
+    )
+    cached.dump_result(data, root=testdir.tmpdir)
+    loaded = cached.load_result(
+        document='helm',
+        version='1.1.1',
+        config='easy',
+        root=testdir.tmpdir,
+    )
+    assert loaded == data

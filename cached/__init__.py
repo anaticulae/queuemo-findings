@@ -11,8 +11,10 @@ from cached.data import CachedFinding
 from cached.data import CachedFindings
 from cached.data import CachedResult
 from cached.data import CachedResults
+from cached.serialize import dump_result
 from cached.serialize import dump_root
 from cached.serialize import dumps
+from cached.serialize import load_result
 from cached.serialize import load_root
 from cached.serialize import loads
 from cached.serialize import name

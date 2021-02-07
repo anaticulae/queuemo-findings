@@ -26,16 +26,35 @@ def loads(raw: bytes) -> cached.CachedResult:
     return document
 
 
+def dump_result(document: cached.CachedResult, root: str) -> str:
+    named = name(version=document.version, config=document.config)
+    parent = os.path.join(root, document.document)
+    path = os.path.join(parent, named)
+    os.makedirs(parent, exist_ok=True)  # create parent
+    utila.debug(f'write: {path}')
+    dumped = cached.dumps(document)
+    utila.file_create_binary(path, dumped)
+    return path
+
+
+def load_result(
+        document: str = None,
+        version: str = None,
+        config: str = None,
+        root: str = None,
+) -> cached.CachedResult:
+    named = name(version=version, config=config)
+    path = os.path.join(root, document, named)
+    assert os.path.exists(path), str(path)
+    loaded = utila.file_read_binary(path)
+    document = loads(loaded)
+    return document
+
+
 def dump_root(documents: cached.CachedResults, root: str):
     assert os.path.exists(root), str(root)
     for document in documents:
-        named = name(version=document.version, config=document.config)
-        parent = os.path.join(root, document.document)
-        path = os.path.join(parent, named)
-        os.makedirs(parent, exist_ok=True)  # create parent
-        utila.debug(f'write: {path}')
-        dumped = cached.dumps(document)
-        utila.file_create_binary(path, dumped)
+        dump_result(document, root)
 
 
 def load_root(
