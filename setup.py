@@ -41,6 +41,7 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
+            'cached',
             'qcon',
         ],
         entry_points={
