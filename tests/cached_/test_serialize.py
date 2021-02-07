@@ -21,3 +21,14 @@ def test_dump_and_load_document():
 def test_load_root(example):
     loaded = cached.load_root(example)
     assert len(loaded) == 7
+
+
+def test_load_root_filter(example):
+    loaded = cached.load_root(example, document='bachelor90')
+    assert len(loaded) == 5
+
+    loaded = cached.load_root(example, document='bachelor90', version='1.1.1')
+    assert len(loaded) == 1
+
+    loaded = cached.load_root(example, version='1.1.1')
+    assert len(loaded) == 2
