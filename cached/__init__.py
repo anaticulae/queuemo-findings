@@ -6,6 +6,20 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Dumper
+======
+
+dumped/
+    document/
+        bachelor90/
+            v00_10_11_release
+
+.. code-block:: none
+
+    dumped  files       : show all files
+            findings    : show possible findings
+            versions    : show all software versions
+"""
 
 from cached.data import CachedFinding
 from cached.data import CachedFindings
