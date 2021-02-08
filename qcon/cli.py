@@ -8,24 +8,61 @@
 #==============================================================================
 
 import utila
-import utila.cli
 
-from qcon import __version__
+import cached
+import qcon
 
-COMMANDS = []  # add additional commands here
+CMD = [
+    utila.Command(
+        longcut='collect',
+        message='collect results and merge to database',
+    ),
+    utila.Parameter(
+        longcut='root',
+        message=f'cache directory to write dumps(default:{cached.root()})',
+    ),
+]
 
 
 @utila.saveme
 def main():
-    parser = utila.cli.create_parser(
-        COMMANDS,
-        version=__version__,
+    parser = utila.create_parser(
+        todo=CMD,
+        version=qcon.__version__,
         config=utila.ParserConfiguration(
-            outputparameter=True,
+            outputparameter=False,
             inputparameter=True,
+            cacheflag=False,
+            pages=False,
+            waitingflag=False,
         ),
     )
     args = utila.parse(parser)
-    inputpath, output, _ = utila.sources(args)  # pylint:disable=W0612
+    inputpath, _ = utila.sources(args)  # pylint:disable=W0612
 
+    root = args.get('root', None)
+    if not root:
+        root = cached.root()
+    if args.get('collect'):
+        returncode = collect(inputpath, root)
+        if returncode:
+            return returncode
     return utila.SUCCESS
+
+
+def collect(inputpath: str, root: str):
+    documents = []
+    for item in inputpath:
+        utila.log(f'collect: {item}')
+        try:
+            document = cached.collect(item)
+        except ValueError:
+            utila.error(f'not a valid document folder: {item}')
+            continue
+        documents.append(document)
+    if documents:
+        utila.log(f'dump: {root}')
+        cached.dump_root(documents, root=root)
+        return utila.SUCCESS
+    utila.error('could not dump any data')
+    return utila.FAILURE

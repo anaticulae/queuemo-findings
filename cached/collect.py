@@ -12,12 +12,15 @@ import os
 import iamraw
 import link
 import protocol
+import utila
 
 import cached
 
 
 def collect(path: str) -> 'cached.CachedResult':
     findings = os.path.join(path, 'result', '__optimized__')
+    if not utila.exists(findings):
+        raise ValueError(f'could not find {findings}')
     pagefindings: iamraw.PageFindings = protocol.load_grouped(findings)
     collected = []
     for page in pagefindings:
