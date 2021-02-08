@@ -21,6 +21,7 @@ dumped/
             versions    : show all software versions
 """
 
+from cached.collect import collect
 from cached.data import CachedFinding
 from cached.data import CachedFindings
 from cached.data import CachedResult
@@ -33,3 +34,5 @@ from cached.serialize import load_root
 from cached.serialize import loads
 from cached.serialize import name
 from cached.serialize import version_raw
+
+CONFIG_DEFAULT = 'release'
