@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
+
 import cached
 
 
@@ -48,3 +50,16 @@ def test_dump_load_result(testdir):
         root=testdir.tmpdir,
     )
     assert loaded == data
+
+
+def test_collect_and_dump(testdir):
+    source = power.link(power.HOME025_PDF)
+    document = cached.collect(source)
+    cached.dump_root(document, testdir.tmpdir)
+    loaded = cached.load_result(
+        document=document.document,
+        version=document.version,
+        config=document.config,
+        root=testdir.tmpdir,
+    )
+    assert loaded == document
