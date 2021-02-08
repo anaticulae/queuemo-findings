@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* connect collect command to data logic (0e69cbaeccf5)
+* add config to manage cached global vars (7476d9025425)
+* enable dumping single document (22f902547dcd)
+* add method to collect cached data from queuemo result (38ca57b9a5b7)
+
+### Fix
+
+* use absolute serialize path (444cfc099128)
+
 ## v0.1.0
 
 ### Feature
