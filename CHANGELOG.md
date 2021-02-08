@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add list command (1429011e5fd0)
+
+### Fix
+
+* rename collect command to publish (6866ab348664)
+* use filename instead of tmp name (297a72f4be3c)
+
 ## v0.2.0
 
 ### Feature
