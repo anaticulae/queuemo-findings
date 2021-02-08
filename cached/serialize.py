@@ -67,6 +67,7 @@ def load_root(
 ) -> cached.CachedResults:
     result = []
     for item in collect_root(root, document, version, config):
+        item = os.path.join(root, item)
         raw = utila.file_read_binary(item)
         loaded = loads(raw)
         result.append(loaded)
