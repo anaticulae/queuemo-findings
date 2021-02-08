@@ -43,6 +43,7 @@ if __name__ == "__main__":
         packages=[
             'cached',
             'qcon',
+            'qcon.cmd',
         ],
         entry_points={
             'console_scripts': [

@@ -11,6 +11,7 @@ import utila
 
 import cached
 import qcon
+import qcon.cmd.publish
 
 CMD = [
     utila.Command(
@@ -44,25 +45,7 @@ def main():
     if not root:
         root = cached.root()
     if args.get('publish'):
-        returncode = publish(inputpath, root)
+        returncode = qcon.cmd.publish.run(inputpath, root)
         if returncode:
             return returncode
     return utila.SUCCESS
-
-
-def publish(inputpath: str, root: str):
-    documents = []
-    for item in inputpath:
-        utila.log(f'collect: {item}')
-        try:
-            document = cached.collect(item)
-        except ValueError:
-            utila.error(f'not a valid document folder: {item}')
-            continue
-        documents.append(document)
-    if documents:
-        utila.log(f'dump: {root}')
-        cached.dump_root(documents, root=root)
-        return utila.SUCCESS
-    utila.error('could not dump any data')
-    return utila.FAILURE
