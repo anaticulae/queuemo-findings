@@ -30,7 +30,7 @@ def test_qcon_collect_home25(testdir, monkeypatch):
 
     home25 = power.link(power.HOME025_PDF)
     order09 = power.link(power.ORDER009_PDF)
-    cmd = f'-i {home25} -i {order09} --collect --root {cache}'
+    cmd = f'-i {home25} -i {order09} --publish --root {cache}'
     tests.qcon_.run(cmd, monkeypatch=monkeypatch)
 
     loaded = cached.load_root(cache)

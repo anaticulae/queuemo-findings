@@ -14,7 +14,7 @@ import qcon
 
 CMD = [
     utila.Command(
-        longcut='collect',
+        longcut='publish',
         message='collect results and merge to database',
     ),
     utila.Parameter(
@@ -43,14 +43,14 @@ def main():
     root = args.get('root', None)
     if not root:
         root = cached.root()
-    if args.get('collect'):
-        returncode = collect(inputpath, root)
+    if args.get('publish'):
+        returncode = publish(inputpath, root)
         if returncode:
             return returncode
     return utila.SUCCESS
 
 
-def collect(inputpath: str, root: str):
+def publish(inputpath: str, root: str):
     documents = []
     for item in inputpath:
         utila.log(f'collect: {item}')
