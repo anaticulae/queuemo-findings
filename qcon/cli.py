@@ -11,12 +11,17 @@ import utila
 
 import cached
 import qcon
+import qcon.cmd.list
 import qcon.cmd.publish
 
 CMD = [
     utila.Command(
         longcut='publish',
         message='collect results and merge to database',
+    ),
+    utila.Command(
+        longcut='list',
+        message='list results in data base',
     ),
     utila.Parameter(
         longcut='root',
@@ -46,6 +51,10 @@ def main():
         root = cached.root()
     if args.get('publish'):
         returncode = qcon.cmd.publish.run(inputpath, root)
+        if returncode:
+            return returncode
+    if args.get('list'):
+        returncode = qcon.cmd.list.run(root)
         if returncode:
             return returncode
     return utila.SUCCESS
