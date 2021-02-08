@@ -11,6 +11,8 @@ import flask
 import flask_bootstrap
 
 import qview.config
+from qview.view.findings import findings_
+from qview.view.welcome import welcome_
 
 
 def create_application() -> flask.Flask:
