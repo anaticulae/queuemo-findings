@@ -53,6 +53,8 @@ def load_result(
 
 def dump_root(documents: cached.CachedResults, root: str):
     assert os.path.exists(root), str(root)
+    if isinstance(documents, cached.CachedResult):
+        documents = [documents]
     for document in documents:
         dump_result(document, root)
 
