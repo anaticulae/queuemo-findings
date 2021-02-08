@@ -7,9 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
-import power
 import pytest
 
 import cached
@@ -24,14 +21,7 @@ def test_qcon_run(cmd, monkeypatch):
     tests.qcon_.run(cmd, monkeypatch=monkeypatch)
 
 
-def test_qcon_collect_home25(testdir, monkeypatch):
-    cache = os.path.join(testdir.tmpdir, 'cache')
-    os.makedirs(cache)
-
-    home25 = power.link(power.HOME025_PDF)
-    order09 = power.link(power.ORDER009_PDF)
-    cmd = f'-i {home25} -i {order09} --publish --root {cache}'
-    tests.qcon_.run(cmd, monkeypatch=monkeypatch)
-
+def test_qcon_collect_home25(cached_example):
+    cache = cached_example
     loaded = cached.load_root(cache)
     assert len(loaded) == 2
