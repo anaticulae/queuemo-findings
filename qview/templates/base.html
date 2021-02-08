@@ -1,0 +1,18 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Quality Control{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='base.css') }}">
+{% endblock %}
+
+{% block navbar %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/findings">Findings</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

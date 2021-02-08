@@ -44,6 +44,8 @@ if __name__ == "__main__":
             'cached',
             'qcon',
             'qcon.cmd',
+            'qview',
+            'qview.api',
         ],
         entry_points={
             'console_scripts': [
