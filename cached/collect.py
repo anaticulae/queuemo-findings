@@ -41,7 +41,8 @@ def collect(path: str) -> 'cached.CachedResult':
 
 
 def document_version_config(path: str) -> tuple:
-    document = os.path.split(path)[1]
+    job = link.load_job(os.path.join(path, 'info.yaml'))
+    document = job.title.replace('.pdf', '')
     loaded = link.load_debug(path)
     version = loaded.get('queuemo', None)
     config = loaded.get('config', cached.CONFIG_DEFAULT)
