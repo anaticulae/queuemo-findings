@@ -22,6 +22,7 @@ dumped/
 """
 
 from cached.collect import collect
+from cached.config import root
 from cached.data import CachedFinding
 from cached.data import CachedFindings
 from cached.data import CachedResult
