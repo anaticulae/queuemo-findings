@@ -8,6 +8,7 @@
 # =============================================================================
 
 import pytest
+import utilatest
 
 import cached
 import tests.qcon_
@@ -25,3 +26,11 @@ def test_qcon_collect_home25(cached_example):
     cache = cached_example
     loaded = cached.load_root(cache)
     assert len(loaded) == 2
+
+
+def test_cli_list(cached_example, monkeypatch, capsys):
+    tests.qcon_.run(f'--list --root {cached_example}', monkeypatch=monkeypatch)
+
+    stdout = utilatest.stdout(capsys).strip()
+    assert len(stdout.splitlines()) == 2
+    assert all((len(line.split()) == 3 for line in stdout.splitlines()))
