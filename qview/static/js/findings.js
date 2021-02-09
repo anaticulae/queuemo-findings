@@ -15,21 +15,23 @@ class Findings {
 const findings = new Findings()
 
 const update_plots = function () {
-    let selected = findings_selected()
+    let data = findings_selected()
+
+    request('/findings/plots', data, function (response) {
+
+    })
 }
 
 const findings_selected = function () {
-    let documents = $('input.documents:checked')
-    let docs = [];
-    documents.each(function (i, el) {
-        docs.push(documents[i].id)
-    });
-    let versions = $('input.versions:checked')
-    let vers = []
-    versions.each(function (i, el) {
-        vers.push(versions[i].id)
-    });
-    return docs, vers
+    let documents = $.map($('input.documents:checked'), s => s.id)
+    let versions = $.map($('input.versions:checked'), s => s.id)
+    let findings = $.map($('input.findings:checked'), s => s.id)
+    let data = {
+        'documents': documents,
+        'versions': versions,
+        'findings': findings,
+    }
+    return data
 }
 
 const select_all = function () {
