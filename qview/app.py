@@ -11,6 +11,7 @@ import flask
 import flask_bootstrap
 
 import qview.config
+from qview.api.findings import *  # pylint:disable=W0401
 from qview.view.findings import findings_
 from qview.view.welcome import welcome_
 
@@ -30,7 +31,11 @@ def create_application() -> flask.Flask:
     appi.config.setdefault('BOOTSTRAP_SERVE_LOCAL', True)
     flask_bootstrap.Bootstrap(app=appi)
 
+    # views
     appi.register_blueprint(welcome_)
     appi.register_blueprint(findings_)
+
+    # data
+    appi.register_blueprint(api_findings, url_prefix=qview.config.API_PREFIX)
 
     return appi

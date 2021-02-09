@@ -8,3 +8,4 @@
 # =============================================================================
 
 SECRET_KEY = b'helmut_max_power_abs29.nsTODOThisIsVerySecreyISwarTODO'
+API_PREFIX = '/api/v0/'
