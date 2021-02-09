@@ -81,17 +81,32 @@ def collect_root(
         config: str = None,
 ) -> 'paths':
     collected = []
-    version = version_raw(version) if version else None
+    if isinstance(document, str):
+        document = [document]
+    if isinstance(version, list):
+        version = [version_raw(item) for item in version]
+    else:
+        version = [version_raw(version)] if version else None
+    if isinstance(config, str):
+        config = [config]
     for item in utila.file_list(root):
         raw = str(item)
-        if document and document not in raw:
+        if skip(document, raw):
             continue
-        if version and version not in raw:
+        if skip(version, raw):
             continue
-        if config and config not in raw:
+        if skip(config, raw):
             continue
         collected.append(item)
     return collected
+
+
+def skip(items: list, raw: str) -> bool:
+    if not items:
+        return False
+    if any((item in raw for item in items)):
+        return False
+    return True
 
 
 def version_raw(raw: str):
