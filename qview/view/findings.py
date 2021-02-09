@@ -18,10 +18,12 @@ findings_ = flask.Blueprint('findings', __name__)  # pylint:disable=invalid-name
 def show_findings():
     documents = collect('document')
     versions = collect('version')
+    findings_collected = findings()
     rendered = flask.render_template(
         'findings/index.html',
         documents=documents,
         versions=versions,
+        findings=findings_collected,
     )
     return rendered
 
@@ -31,5 +33,14 @@ def collect(attribute: str):
     files = cached.load_root(cached.root())
     for item in files:
         collected.add(getattr(item, attribute))
+    result = sorted(list(collected))
+    return result
+
+
+def findings():
+    collected = set()
+    files = cached.load_root(cached.root())
+    for item in files:
+        collected.update({finding.msgid for finding in item.findings})
     result = sorted(list(collected))
     return result
