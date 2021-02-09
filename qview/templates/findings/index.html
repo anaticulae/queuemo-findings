@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/findings.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <h1>Findings</h1>
@@ -34,21 +39,26 @@
             <button id="generate">Generate</button>
         </div>
         <div class="row-md-4 themed-grid-col">
-            <h3>Documents</h3>
+            <h3>Documents <button id="documents_all" class="select">all</button></h3>
             {% for item in documents %}
-            <span><input type="checkbox" id="{{item}}" class="documents" style="margin:5px;">{{item}}</span>
+            <span class="document_selector"><input type="checkbox" id="{{item}}" class="documents">{{item}}</span>
             {% endfor %}
         </div>
         <div class="row-md-4 themed-grid-col">
-            <h3>Versions</h3>
+            <h3>Versions <button id="versions_all" class="select">all</button></h3>
             <div class="content">
                 {% for item in versions %}
-                <span><input type="checkbox" id="{{item}}" class="versions" style="margin:5px;">{{item}}</span>
+                <span class="version_selector"><input type="checkbox" id="{{item}}" class="versions">{{item}}</span>
                 {% endfor %}
             </div>
         </div>
         <div class=" row-md-4 themed-grid-col">
-            <h3>Findings</h3>
+            <h3>Findings <button id="findings_all" class="select">all</button></h3>
+            <div class="content">
+                {% for item in findings %}
+                <span class="finding_selector"><input type="checkbox" id="{{item}}" class="findings">{{item}}</span>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
