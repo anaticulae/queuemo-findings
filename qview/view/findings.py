@@ -9,10 +9,36 @@
 
 import flask
 
+import cached
+
 findings_ = flask.Blueprint('findings', __name__)  # pylint:disable=invalid-name
 
 
 @findings_.route('/findings')
 def show_findings():
-    rendered = flask.render_template('findings/index.html')
+    files = documents()
+    versions_ = versions()
+    rendered = flask.render_template(
+        'findings/index.html',
+        documents=files,
+        versions=versions_,
+    )
     return rendered
+
+
+def documents():
+    collected = set()
+    files = cached.load_root(cached.root())
+    for item in files:
+        collected.add(item.document)
+    result = sorted(list(collected))
+    return result
+
+
+def versions():
+    collected = set()
+    files = cached.load_root(cached.root())
+    for item in files:
+        collected.add(item.version)
+    result = sorted(list(collected))
+    return result

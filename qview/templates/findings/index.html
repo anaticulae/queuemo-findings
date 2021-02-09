@@ -4,4 +4,58 @@
 
 <h1>Findings</h1>
 
+<style>
+    .themed-grid-col {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: rgba(86, 61, 124, .15);
+        border: 1px solid rgba(86, 61, 124, .2);
+    }
+
+    .themed-container {
+        padding: 15px;
+        margin-bottom: 30px;
+        background-color: rgba(0, 123, 255, .15);
+        border: 1px solid rgba(0, 123, 255, .2);
+    }
+
+</style>
+
+<div class="row mb-3">
+    <div class="col-md-8 themed-grid-col">
+        <div class="row-md-8 themed-grid-col">Software</div>
+        <div class="row-md-8 themed-grid-col">
+            <h2>Plots</h2>
+            <div id="plots"></div>
+        </div>
+    </div>
+    <div class="col-md-4 themed-grid-col">
+        <div class="row-md-4 themed-grid-col">
+            <button id="generate">Generate</button>
+        </div>
+        <div class="row-md-4 themed-grid-col">
+            <h3>Documents</h3>
+            {% for item in documents %}
+            <span><input type="checkbox" id="{{item}}" class="documents" style="margin:5px;">{{item}}</span>
+            {% endfor %}
+        </div>
+        <div class="row-md-4 themed-grid-col">
+            <h3>Versions</h3>
+            <div class="content">
+                {% for item in versions %}
+                <span><input type="checkbox" id="{{item}}" class="versions" style="margin:5px;">{{item}}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class=" row-md-4 themed-grid-col">
+            <h3>Findings</h3>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/findings.js') }}"></script>
 {% endblock %}
