@@ -13,3 +13,10 @@ button.select{
     height:20px;
     font-size:small;
 }
+
+.plot{
+    width: 80%;
+    min-height:128px;
+    border:1px solid black;
+    margin: 10px;
+}
