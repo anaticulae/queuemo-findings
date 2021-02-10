@@ -8,6 +8,7 @@
 # =============================================================================
 
 import functools
+import os
 
 import power
 import pytest
@@ -26,6 +27,8 @@ RESOURCES = [
     power.HOME025_PDF,
 ]
 
+CACHED = os.path.join(power.generated(), 'dev_cached_root')
+
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
@@ -33,6 +36,7 @@ def pytest_sessionstart():
 
 
 def extract(files):
+    os.makedirs(CACHED, exist_ok=True)
     # TODO: MOVE TO QUEUEMO?
     todo = []
     for source in files:
@@ -40,6 +44,9 @@ def extract(files):
         def runme(source=source):
             outpath = power.link(source)
             cmd = f'queuemo_single -i {source} -o {outpath} --create'
+            utila.log(cmd)
+            utila.run(cmd)
+            cmd = f'qcon -i {outpath} --root {CACHED} --publish'
             utila.log(cmd)
             utila.run(cmd)
 
