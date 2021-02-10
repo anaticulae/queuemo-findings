@@ -34,3 +34,9 @@ def test_cli_list(cached_example, monkeypatch, capsys):
     stdout = utilatest.stdout(capsys).strip()
     assert len(stdout.splitlines()) == 2
     assert all((len(line.split()) == 3 for line in stdout.splitlines()))
+
+
+def test_cli_publish_invalid(testdir, monkeypatch, capsys):
+    tests.qcon_.failure(f'--publish', monkeypatch=monkeypatch)
+    stderr = utilatest.stderr(capsys).strip()
+    assert 'could not dump any data' in stderr
