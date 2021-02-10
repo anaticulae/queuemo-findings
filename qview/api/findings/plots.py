@@ -24,10 +24,13 @@ import qview.api.findings.renderer
 )
 def plots():
     # TODO: WTF!!!
-    data = json.loads(flask.request.args.get('data', ''))
+    data = json.loads(flask.request.args.get('data', '{}'))
 
-    documents, versions = data['documents'], data['versions']
-    findings = set(data['findings'])
+    try:
+        documents, versions = data['documents'], data['versions']
+        findings = set(data['findings'])
+    except KeyError:
+        documents, versions, findings = [], [], {}
 
     plot_info, grouped = select(documents, versions, findings)
 
