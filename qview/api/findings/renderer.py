@@ -41,7 +41,7 @@ def render(
     return result
 
 
-def add_todo(paths, documents):
+def add_todo(paths, documents, versions):
     workdir = qview.config.renderer_workdir()
     todo = []
     for path, document in zip(paths, documents.values()):
@@ -50,7 +50,7 @@ def add_todo(paths, documents):
             continue
         utila.file_create_binary(rendered)
         # render asynchronously
-        todo.append([rendered, document])
+        todo.append([rendered, document, versions])
     if not todo:
         return
     run = threading.Thread(target=render_todo, args=(todo,))
@@ -58,8 +58,8 @@ def add_todo(paths, documents):
 
 
 def render_todo(todo):
-    for path, documents in todo:
-        rendered = render(documents)
+    for path, documents, versions in todo:
+        rendered = render(documents, versions=versions)
         utila.file_replace_binary(path, rendered)
 
 

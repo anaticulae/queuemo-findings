@@ -32,7 +32,7 @@ def plots():
     plot_info, grouped = select(documents, versions, findings)
 
     shortpath = [item['path'] for item in plot_info]
-    qview.api.findings.renderer.add_todo(shortpath, grouped)
+    qview.api.findings.renderer.add_todo(shortpath, grouped, versions)
 
     dumped = flask.jsonify({'plots': plot_info})
     return dumped
@@ -46,7 +46,7 @@ def select(documents, versions: list, findings) -> dict:
         document=documents,
         version=versions,
     )
-    versions: str = ''.join(versions)
+    versions: str = '_'.join(versions)
     grouped = groupby_document(collected)
     result = []
     for document_name, docs in grouped.items():
