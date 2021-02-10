@@ -23,7 +23,7 @@ const request = function (url, params, callback, error = undefined) {
     $.ajax(call, {
         method: "GET",
         dataType: "json",
-        data: { data: JSON.stringify(params) },
+        data: params,
         success: function (response) {
             callback(response)
         },

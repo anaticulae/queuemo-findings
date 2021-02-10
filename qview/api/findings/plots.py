@@ -8,7 +8,6 @@
 # =============================================================================
 
 import collections
-import json
 
 import flask
 import utila
@@ -23,14 +22,9 @@ import qview.api.findings.renderer
     methods=['GET'],
 )
 def plots():
-    # TODO: WTF!!!
-    data = json.loads(flask.request.args.get('data', '{}'))
-
-    try:
-        documents, versions = data['documents'], data['versions']
-        findings = set(data['findings'])
-    except KeyError:
-        documents, versions, findings = [], [], {}
+    data = getdict(flask.request.args)
+    documents, versions = data.get('documents', []), data.get('versions', [])
+    findings = set(data.get('findings', []))
 
     plot_info, grouped = select(documents, versions, findings)
 
@@ -39,6 +33,14 @@ def plots():
 
     dumped = flask.jsonify({'plots': plot_info})
     return dumped
+
+
+def getdict(collection):
+    # TODO: HACKY
+    result = {}
+    for key in collection:
+        result[key.replace('[]', '')] = collection.getlist(key)
+    return result
 
 
 def select(documents, versions: list, findings) -> dict:
