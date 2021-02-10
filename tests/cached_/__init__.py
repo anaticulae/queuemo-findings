@@ -11,19 +11,20 @@ import pytest
 
 import cached
 
+# yapf:disable
+FILES = [
+    cached.CachedResult(document='bachelor90', version='1.1.1', config='release'),
+    cached.CachedResult(document='bachelor90', version='1.1.2', config='release'),
+    cached.CachedResult(document='bachelor90', version='1.2.1', config='release'),
+    cached.CachedResult(document='bachelor90', version='2.0.0', config='release'),
+    cached.CachedResult(document='bachelor90', version='2.1.0', config='release'),
+    cached.CachedResult(document='master110', version='1.1.1', config='prefix'),
+    cached.CachedResult(document='master110', version='1.1.2', config='prefix'),
+]
+# yapf:enable
+
 
 @pytest.fixture
 def example(testdir):
-    # yapf:disable
-    files = [
-        cached.CachedResult(document='bachelor90', version='1.1.1', config='release'),
-        cached.CachedResult(document='bachelor90', version='1.1.2', config='release'),
-        cached.CachedResult(document='bachelor90', version='1.2.1', config='release'),
-        cached.CachedResult(document='bachelor90', version='2.0.0', config='release'),
-        cached.CachedResult(document='bachelor90', version='2.1.0', config='release'),
-        cached.CachedResult(document='master110', version='1.1.1', config='prefix'),
-        cached.CachedResult(document='master110', version='1.1.2', config='prefix'),
-    ]
-    # yapf:enable
-    cached.dump_root(files, testdir.tmpdir)
+    cached.dump_root(FILES, testdir.tmpdir)
     return testdir.tmpdir
