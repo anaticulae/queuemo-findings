@@ -35,3 +35,13 @@ def test_plots_get_homework25(client, testdir, monkeypatch):
         )
     assert len(content['plots']) == 1
     assert len(utila.file_list('renderer')) == 1
+
+
+def test_plots_get_homework25_error1220_error1221(client, testdir, monkeypatch):
+    # TODO: SIMPLIFY!
+    cmd = ('findings/plots?documents%5B%5D=homework25&'
+           'findings%5B%5D=E1220&findings%5B%5D=E1221')
+    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+        content = tests.qview_.apicall(client, cmd)
+    assert len(content['plots']) == 1
+    assert len(utila.file_list('renderer')) == 1
