@@ -2,6 +2,33 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* add distance to text and div border (681dd839d93e)
+* limit plot size height (1c38b078d18e)
+* use selected versions (84a76c7d10e7)
+* add plot provider (200e6b5b2e63)
+* add legend to plot renderer (d98db01a1fbf)
+* skip and log pickling error (de13d7967005)
+* increase distance between max value and top border (e2b788db2518)
+* link renderer to user call, run in parallel (1183383541cc)
+* add renderer tmp path (08e32a30d5b8)
+* add finding version plot renderer (6f92f9be0f89)
+* add method to collect and sort available versions (48dd9a169a52)
+* register data API (01a4c582c75e)
+* add selected plot provider (79945e7d6a27)
+* add multiple filter options (582721912f08)
+* render incoming plots (30a48735b07d)
+* define plots update API (4320c2630152)
+* make findings selectable (3fe6c5bff496)
+* collect used finding ids (fa2146cedca0)
+* add rpc call (08722d6d461a)
+* render list of documents and used versions (89fd5633c0e0)
+* add findings and home view (5c1c6c987a31)
+* add basic application structure (7be56fbc144e)
+
 ## v0.3.0
 
 ### Feature
