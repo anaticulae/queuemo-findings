@@ -25,6 +25,8 @@ def render(
         legend: str = None,
         findings: set = None,
 ) -> bytes:
+    if not legend and documents:
+        legend = documents[0].document
     versions, counted = data(documents, versions=versions, findings=findings)
     versions = [f'v{item}' for item in versions]
     ymax_ = ymax(documents) * 1.1
