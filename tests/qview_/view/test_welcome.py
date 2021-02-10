@@ -6,3 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import tests.qview_
+
+
+def test_welcome(client):
+    welcome = tests.qview_.content(client, '/')
+    assert '<h1>Home</h1>' in welcome
