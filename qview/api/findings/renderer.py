@@ -27,7 +27,7 @@ def render(
 ) -> bytes:
     versions, counted = data(documents, versions=versions, findings=findings)
     versions = [f'v{item}' for item in versions]
-    ymax_ = ymax(documents)
+    ymax_ = ymax(documents) * 1.1
     painted = painter.plot_render(
         counted,
         labels=versions,
