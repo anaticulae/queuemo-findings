@@ -7,9 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import flask
 
 import cached
+import qview.config
 
 findings_ = flask.Blueprint('findings', __name__)  # pylint:disable=invalid-name
 
@@ -26,6 +29,19 @@ def show_findings():
         findings=findings_collected,
     )
     return rendered
+
+
+@findings_.route('/plots/<string:image>')
+def view_plot(image: str = None):
+    workdir = qview.config.renderer_workdir()
+
+    image = os.path.join(workdir, image)
+    if not os.path.exists(image):
+        return b''
+
+    # Hint: contextmanager does not work here
+    response = flask.send_file(open(image, mode='rb'), mimetype='image')
+    return response
 
 
 def collect(attribute: str):
