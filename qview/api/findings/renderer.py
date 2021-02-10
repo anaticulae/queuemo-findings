@@ -53,6 +53,9 @@ def add_todo(paths, documents, versions):
         todo.append([rendered, document, versions])
     if not todo:
         return
+    if qview.config.sync():
+        render_todo(todo)
+        return
     run = threading.Thread(target=render_todo, args=(todo,))
     run.start()
 

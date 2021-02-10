@@ -15,6 +15,7 @@ import pytest
 import utila
 
 import qcon
+import qview.config
 from tests.cached_ import example  # pylint:disable=W0611
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
@@ -28,6 +29,8 @@ RESOURCES = [
 ]
 
 CACHED = os.path.join(power.generated(), 'dev_cached_root')
+
+qview.config.SYNC = True
 
 
 @pytest.mark.usefixtures('session')

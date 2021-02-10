@@ -15,6 +15,8 @@ import utila
 SECRET_KEY = b'helmut_max_power_abs29.nsTODOThisIsVerySecreyISwarTODO'
 API_PREFIX = '/api/v0/'
 
+SYNC = False
+
 
 def renderer_workdir() -> str:
     try:
@@ -24,3 +26,7 @@ def renderer_workdir() -> str:
         exit(utila.FAILURE)
     os.makedirs(path, exist_ok=True)
     return path
+
+
+def sync() -> bool:
+    return SYNC
