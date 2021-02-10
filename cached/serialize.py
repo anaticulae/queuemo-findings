@@ -22,7 +22,10 @@ def dumps(document: cached.CachedResult) -> bytes:
 
 
 def loads(raw: bytes) -> cached.CachedResult:
-    document = pickle.loads(raw)  # nosec
+    try:
+        document = pickle.loads(raw)  # nosec
+    except pickle.UnpicklingError:
+        return None
     return document
 
 
@@ -48,6 +51,8 @@ def load_result(
     assert os.path.exists(path), str(path)
     loaded = utila.file_read_binary(path)
     document = loads(loaded)
+    if document is None:
+        utila.error(f'could not load document: {document} {version} {config}')
     return document
 
 
@@ -67,9 +72,12 @@ def load_root(
 ) -> cached.CachedResults:
     result = []
     for item in collect_root(root, document, version, config):
-        item = os.path.join(root, item)
-        raw = utila.file_read_binary(item)
+        path = os.path.join(root, item)
+        raw = utila.file_read_binary(path)
         loaded = loads(raw)
+        if loaded is None:
+            utila.error(f'could not load document: {path}')
+            continue
         result.append(loaded)
     return result
 

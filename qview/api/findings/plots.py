@@ -72,6 +72,8 @@ def select(documents, versions: list, findings) -> dict:
 def groupby_document(documents) -> dict:
     collected = collections.defaultdict(list)
     for document in documents:
+        if not document:
+            continue
         collected[document.document].append(document)
     result = dict(collected)
     return result
