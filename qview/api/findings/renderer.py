@@ -9,22 +9,47 @@
 
 import collections
 
+import painter
 import semver
 
 import cached
 
 
-def render(documents: cached.CachedResults, findings: set = None) -> bytes:
-    pass
+def render(
+        documents: cached.CachedResults,
+        versions=None,
+        legend: str = None,
+        findings: set = None,
+) -> bytes:
+    versions, counted = data(documents, versions=versions, findings=findings)
+    versions = [f'v{item}' for item in versions]
+    ymax_ = ymax(documents)
+    painted = painter.plot_render(
+        counted,
+        labels=versions,
+        legends=[legend],
+        width=11.16,
+        ylim=(0, ymax_),
+    )
+    result = painter.png(painted)
+    return result
 
 
-def data(documents: cached.CachedResults, findings: set = None) -> list:
-    collected = collections.defaultdict(0)
+def data(
+        documents: cached.CachedResults,
+        versions=None,
+        findings: set = None,
+) -> list:
+    if not versions:
+        versions = versions_(documents)
+    collected = collections.defaultdict(int)
     for document in documents:
-        collected[document.version] = len(document.findings)
+        collected[document.version] = count_findings(document, findings)
+    counted = [collected[item] for item in versions]
+    return versions, counted
 
 
-def versions(documents: cached.CachedResults) -> list:
+def versions_(documents: cached.CachedResults) -> list:
     collected = set()
     for document in documents:
         parsed = semver.parse_version_info(document.version)
@@ -32,3 +57,16 @@ def versions(documents: cached.CachedResults) -> list:
     result = sorted(list(collected))
     result = [str(item) for item in result]
     return result
+
+
+def ymax(documents) -> int:
+    maxfinding = max([len(item.findings) for item in documents], default=5)
+    maxfinding = max(maxfinding, 5)
+    return maxfinding
+
+
+def count_findings(document, findings):
+    collected = document.findings
+    if findings:
+        collected = [item for item in document.findings if item in findings]
+    return len(collected)
