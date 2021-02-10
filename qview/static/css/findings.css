@@ -15,8 +15,7 @@ button.select{
 }
 
 .plot{
-    width: 80%;
-    min-height:128px;
+    height:256px;
     border:1px solid black;
-    margin: 10px;
+    margin:10px;
 }
