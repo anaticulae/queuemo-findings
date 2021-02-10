@@ -24,3 +24,14 @@ def test_plots_get_root(client, testdir, monkeypatch):
         content = tests.qview_.apicall(client, 'findings/plots')
     assert len(content['plots']) == 2
     assert len(utila.file_list('renderer')) == 2
+
+
+def test_plots_get_homework25(client, testdir, monkeypatch):
+    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+        # TODO: SIMPLIFY!
+        content = tests.qview_.apicall(
+            client,
+            'findings/plots?documents%5B%5D=homework25',
+        )
+    assert len(content['plots']) == 1
+    assert len(utila.file_list('renderer')) == 1
