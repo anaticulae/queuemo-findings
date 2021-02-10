@@ -8,11 +8,15 @@
 # =============================================================================
 
 import collections
+import os
+import threading
 
 import painter
 import semver
+import utila
 
 import cached
+import qview.config
 
 
 def render(
@@ -33,6 +37,28 @@ def render(
     )
     result = painter.png(painted)
     return result
+
+
+def add_todo(paths, documents):
+    workdir = qview.config.renderer_workdir()
+    todo = []
+    for path, document in zip(paths, documents.values()):
+        rendered = os.path.join(workdir, path)
+        if os.path.exists(os.path.join(workdir, path)):
+            continue
+        utila.file_create_binary(rendered)
+        # render asynchronously
+        todo.append([rendered, document])
+    if not todo:
+        return
+    run = threading.Thread(target=render_todo, args=(todo,))
+    run.start()
+
+
+def render_todo(todo):
+    for path, documents in todo:
+        rendered = render(documents)
+        utila.file_replace_binary(path, rendered)
 
 
 def data(
