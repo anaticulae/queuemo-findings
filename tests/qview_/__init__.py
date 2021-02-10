@@ -10,6 +10,10 @@
 import contextlib
 import http
 import json.decoder
+import os
+import threading
+
+import qview.config
 
 
 def decode(
@@ -38,3 +42,33 @@ def content(
     if raw:
         return response
     return decode(response)
+
+
+def apicall(
+        client,
+        request: str,
+        prefix=qview.config.API_PREFIX,
+        expected=http.HTTPStatus.OK,
+):
+    cmd = prefix + request
+    response = client.get(cmd)
+    assert response.status_code == expected, request + str(response)
+    return decode(response, expected=expected)
+
+
+LOCK = threading.Lock()
+
+
+@contextlib.contextmanager
+def patch_todo(monkeypatch, testdir, root=None):
+    testdir.mkdir('renderer')
+    workdir = os.path.join(testdir.tmpdir, 'renderer')
+    if root is None:
+        testdir.mkdir('root')
+        root = os.path.join(testdir.tmpdir, 'root')
+    with LOCK:
+        # TODO: INVESTIGATE HOW TO THIS BETTER
+        with monkeypatch.context() as context:
+            context.setenv('DEV_QVIEW_RENDERER_TMP', workdir)
+            context.setenv('DEV_CACHED_ROOT', root)
+            yield workdir
