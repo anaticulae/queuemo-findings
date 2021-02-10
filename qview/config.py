@@ -7,5 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import configo
+import utila
+
 SECRET_KEY = b'helmut_max_power_abs29.nsTODOThisIsVerySecreyISwarTODO'
 API_PREFIX = '/api/v0/'
+
+
+def renderer_workdir() -> str:
+    try:
+        path = configo.env('DEV_QVIEW_RENDERER_TMP')
+    except KeyError:
+        utila.error('require global env `DEV_QVIEW_RENDERER_TMP`')
+        exit(utila.FAILURE)
+    os.makedirs(path, exist_ok=True)
+    return path
