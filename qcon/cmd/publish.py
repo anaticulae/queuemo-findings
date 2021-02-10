@@ -12,14 +12,14 @@ import utila
 import cached
 
 
-def run(inputpath: str, root: str):
+def run(inputpaths: utila.Strings, root: str):
     documents = []
-    for item in inputpath:
-        utila.log(f'collect: {item}')
+    for inputpath in inputpaths:
+        utila.log(f'collect: {inputpath}')
         try:
-            document = cached.collect(item)
+            document = cached.collect(inputpath)
         except ValueError:
-            utila.error(f'not a valid document folder: {item}')
+            utila.error(f'not a valid document folder: {inputpath}')
             continue
         documents.append(document)
     if documents:
