@@ -36,7 +36,7 @@ def render(
     versions, counted = data(documents, versions=versions, findings=findings)
     legend = list(findings) if findings else [legend]
     versions_raw = [f'v{item}' for item in versions]
-    ymax_ = ymax(documents) * 1.1
+    ymax_ = ymax(documents, findings) * 1.1
     diffdoc = qview.api.findings.utils.different_documents(documents)
     usestar = diffdoc > 1 or findings
     painted = painter.plot_render(
@@ -116,9 +116,14 @@ def versions_(documents: cached.CachedResults) -> list:
     return result
 
 
-def ymax(documents) -> int:
-    maxfinding = max([len(item.findings) for item in documents], default=5)
-    maxfinding = max(maxfinding, 5)
+def ymax(documents, findings) -> int:
+    """Determine maximum finding count for selected findings. If no
+    findings are given, count all findings.
+    """
+    counted = [count_findings(item, findings) for item in documents]
+    if findings:
+        counted = utila.flatten(counted)
+    maxfinding = max(counted, default=5)
     return maxfinding
 
 
