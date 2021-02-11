@@ -18,11 +18,15 @@ const update_plots = function () {
     let data = findings_selected()
 
     request('/findings/plots', data, function (response) {
-        $('#plots')[0].innerHTML = ''
-        response.plots.forEach(function (item) {
-            let raw = `<img src="/plots/${item.path}" class="plot"> `
-            $('#plots').append(raw)
-        })
+        // TODO: NOT VERY SMART
+        $('#plots')[0].innerHTML = 'loading...'
+        setTimeout(() => {
+            $('#plots')[0].innerHTML = ''
+            response.plots.forEach(function (item) {
+                let raw = `<img src="/plots/${item.path}" class="plot"> `
+                $('#plots').append(raw)
+            })
+        }, 500)
     })
 }
 
