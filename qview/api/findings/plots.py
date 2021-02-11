@@ -45,17 +45,6 @@ def plots():
     return dumped
 
 
-def getdict(collection) -> dict:
-    """Convert hacky rpc request to usable dict data structure.
-
-    Hint: May remove this HACK later.
-    """
-    result = {}
-    for key in collection:
-        result[key.replace('[]', '')] = collection.getlist(key)
-    return result
-
-
 def select(documents, versions: list, findings) -> dict:
     # TODO: ADD FINDINGS
     root = cached.root()
@@ -90,3 +79,14 @@ def select(documents, versions: list, findings) -> dict:
 def hashed(findings: cached.CachedFindings) -> str:
     merged = ''.join([item.msgid for item in findings])
     return hash(merged)
+
+
+def getdict(collection) -> dict:
+    """Convert hacky rpc request to usable dict data structure.
+
+    Hint: May remove this HACK later.
+    """
+    result = {}
+    for key in collection:
+        result[key.replace('[]', '')] = collection.getlist(key)
+    return result
