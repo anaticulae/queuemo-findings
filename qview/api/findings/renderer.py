@@ -46,6 +46,7 @@ def render(
         width=11.16,
         ylim=(0, ymax_),
         title=title,
+        grid=True,
     )
     result = painter.png(painted)
     return result
