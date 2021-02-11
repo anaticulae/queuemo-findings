@@ -43,7 +43,11 @@ def collect(path: str) -> 'cached.CachedResult':
 def document_version_config(path: str) -> tuple:
     job = link.load_job(os.path.join(path, 'info.yaml'))
     document = job.title.replace('.pdf', '')
-    loaded = link.load_debug(path)
+    if os.path.exists(path):
+        loaded = link.load_debug(path)
+    else:
+        utila.error(f'could not load config: {path}')
+        loaded = {}
     version = loaded.get('queuemo', None)
     config = loaded.get('config', cached.CONFIG_DEFAULT)
     return document, version, config

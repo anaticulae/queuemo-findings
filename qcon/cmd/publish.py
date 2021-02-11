@@ -12,12 +12,15 @@ import utila
 import cached
 
 
-def run(inputpaths: utila.Strings, root: str):
+def run(inputpaths: utila.Strings, root: str, overwrite_version: str = None):
     documents = []
     for inputpath in inputpaths:
         utila.log(f'collect: {inputpath}')
         try:
             document = cached.collect(inputpath)
+            if overwrite_version:
+                utila.debug(f'overwrite collected version: {overwrite_version}')
+                document.version = overwrite_version
         except ValueError:
             utila.error(f'not a valid document folder: {inputpath}')
             continue

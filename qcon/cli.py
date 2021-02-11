@@ -27,6 +27,10 @@ CMD = [
         longcut='root',
         message=f'cache directory to write dumps(default:{cached.root()})',
     ),
+    utila.Parameter(
+        longcut='overwrite_version',
+        message='overwrite or define queuemo version of collected file',
+    ),
 ]
 
 
@@ -49,8 +53,13 @@ def main():
     root = args.get('root', None)
     if not root:
         root = cached.root()
+    overwrite_version = args.get('overwrite_version', None)
     if args.get('publish'):
-        returncode = qcon.cmd.publish.run(inputpath, root)
+        returncode = qcon.cmd.publish.run(
+            inputpath,
+            root,
+            overwrite_version=overwrite_version,
+        )
         if returncode:
             return returncode
     if args.get('list'):

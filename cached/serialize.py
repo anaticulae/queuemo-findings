@@ -30,6 +30,11 @@ def loads(raw: bytes) -> cached.CachedResult:
 
 
 def dump_result(document: cached.CachedResult, root: str) -> str:
+    if document.version is None:
+        utila.error(f'could not dump {document.document}, '
+                    'require --overwrite_version parameter')
+        return None
+
     named = name(version=document.version, config=document.config)
     parent = os.path.join(root, document.document)
     path = os.path.join(parent, named)
