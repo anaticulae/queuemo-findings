@@ -58,6 +58,7 @@ def select(
     versions: str = '_'.join(versions)
     grouped = qview.api.findings.utils.groupby_document(collected)
     result = []
+    versions = versions.replace('.', '_')
     for document_name, docs in grouped.items():
         path = f'{document_name}_{versions}'
         # if item.config:

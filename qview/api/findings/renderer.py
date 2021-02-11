@@ -16,6 +16,7 @@ import semver
 import utila
 
 import cached
+import qview.api.findings.utils
 import qview.config
 
 
@@ -34,11 +35,13 @@ def render(
         legend = documents[0].document
     versions, counted = data(documents, versions=versions, findings=findings)
     legend = list(findings) if findings else [legend]
-    versions = [f'v{item}' for item in versions]
+    versions_raw = [f'v{item}' for item in versions]
     ymax_ = ymax(documents) * 1.1
+    diffdoc = qview.api.findings.utils.different_documents(documents)
+    usestar = diffdoc > 1 or findings
     painted = painter.plot_render(
-        counted,
-        labels=versions,
+        *(counted if usestar else [counted]),
+        labels=versions_raw,
         legends=legend,
         width=11.16,
         ylim=(0, ymax_),
@@ -84,7 +87,23 @@ def data(
     for document in documents:
         collected[document.version] = count_findings(document, findings)
     counted = [collected[item] for item in versions]
+    if findings is not None:
+        if isinstance(counted[0], list):  # TODO: REMOVE THIS HACK
+            counted = transpose(counted)
     return versions, counted
+
+
+def transpose(counted):
+    """\
+    >>> transpose([[1, 16], [1, 16], [1, 16], [1, 16], [1, 16]])
+    [[1, 1, 1, 1, 1], [16, 16, 16, 16, 16]]
+    """
+    # TODO: MOVE TO UTILA? USE NUMPY?
+    result = []
+    for index in range(len(counted[0])):
+        line = [item[index] for item in counted]
+        result.append(line)
+    return result
 
 
 def versions_(documents: cached.CachedResults) -> list:
