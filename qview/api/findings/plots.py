@@ -96,6 +96,18 @@ def groupby_document(documents: cached.CachedResults) -> dict:
     return result
 
 
+def groupby_findings(documents: cached.CachedResults, findings: set)->dict:
+    # Doccount > 1 Findings > 0
+    doccount len(set([item.document for item in documents]))
+    if doccount <= 1 and not findings:
+        # negative case
+        return None
+    result = {}
+    for finding in findings:
+        result[finding] = documents[:]
+    return result
+
+
 def hashed(findings: cached.CachedFindings) -> str:
     merged = ''.join([item.msgid for item in findings])
     return hash(merged)
