@@ -7,7 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
+import utila
 import utilatest
 
 import cached
@@ -40,3 +42,15 @@ def test_cli_publish_invalid(testdir, monkeypatch, capsys):
     tests.qcon_.failure(f'--publish', monkeypatch=monkeypatch)
     stderr = utilatest.stderr(capsys).strip()
     assert 'could not dump any data' in stderr
+
+
+def test_cli_publish_single(testdir, monkeypatch, capsys):
+    source = power.link(power.HOME025_PDF)
+    tests.qcon_.run(
+        f'-i {source} --publish --root {testdir.tmpdir}',
+        monkeypatch=monkeypatch,
+    )
+    assert len(utila.file_list(testdir.tmpdir)) == 1
+    stdout = utilatest.stdout(capsys)
+    assert 'collect:' in stdout
+    assert 'dump:' in stdout
