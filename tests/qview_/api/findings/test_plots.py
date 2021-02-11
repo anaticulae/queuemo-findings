@@ -7,6 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import painter
 import utila
 
 import tests.conftest
@@ -38,10 +41,10 @@ def test_plots_get_homework25(client, testdir, monkeypatch):
 
 
 def test_plots_get_homework25_error1220_error1221(client, testdir, monkeypatch):
-    # TODO: SIMPLIFY!
-    cmd = ('findings/plots?documents%5B%5D=homework25&'
-           'findings%5B%5D=E1220&findings%5B%5D=E1221')
+    cmd = 'findings/plots?documents=homework25&findings=E1220&findings=E1221'
     with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, cmd)
     assert len(content['plots']) == 1
-    assert len(utila.file_list('renderer')) == 1
+    rendered = utila.file_list('renderer', absolute=True)
+    assert len(rendered) == 1
+    painter.show_figure(rendered[0])
