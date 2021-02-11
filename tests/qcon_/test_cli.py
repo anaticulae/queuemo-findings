@@ -54,3 +54,14 @@ def test_cli_publish_single(testdir, monkeypatch, capsys):
     stdout = utilatest.stdout(capsys)
     assert 'collect:' in stdout
     assert 'dump:' in stdout
+
+
+def test_cli_publish_overwriteversion(testdir, monkeypatch, capsys):
+    version = '13.13.13'
+    source = power.link(power.HOME025_PDF)
+    cmd = (f'-i {source} --publish '
+           f'--root {testdir.tmpdir} --overwrite_version {version}')
+    tests.qcon_.run(cmd, monkeypatch=monkeypatch)
+    loaded = cached.load_root(testdir.tmpdir)
+    assert len(loaded) == 1
+    assert loaded[0].version == version
