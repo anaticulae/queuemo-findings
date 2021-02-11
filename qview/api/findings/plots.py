@@ -24,6 +24,7 @@ import utila
 import cached
 import qview.api.findings
 import qview.api.findings.renderer
+import qview.api.findings.utils
 
 
 @qview.api.findings.api_findings.route(
@@ -64,7 +65,7 @@ def select(documents, versions: list, findings) -> dict:
         version=versions,
     )
     versions: str = '_'.join(versions)
-    grouped = groupby_document(collected)
+    grouped = qview.api.findings.utils.groupby_document(collected)
     result = []
     for document_name, docs in grouped.items():
         path = f'{document_name}_{versions}'
@@ -84,28 +85,6 @@ def select(documents, versions: list, findings) -> dict:
         }
         result.append(raw)
     return result, grouped
-
-
-def groupby_document(documents: cached.CachedResults) -> dict:
-    collected = collections.defaultdict(list)
-    for document in documents:
-        if not document:
-            continue
-        collected[document.document].append(document)
-    result = dict(collected)
-    return result
-
-
-def groupby_findings(documents: cached.CachedResults, findings: set)->dict:
-    # Doccount > 1 Findings > 0
-    doccount len(set([item.document for item in documents]))
-    if doccount <= 1 and not findings:
-        # negative case
-        return None
-    result = {}
-    for finding in findings:
-        result[finding] = documents[:]
-    return result
 
 
 def hashed(findings: cached.CachedFindings) -> str:
