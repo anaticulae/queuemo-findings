@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* use selective findings as additional render input (80004e023f63)
+* add plot updater (3896df496fc0)
+* add parameter to overwrite collected version (4bfe5a475801)
+* add method to group data by finding id (194036098611)
+* add sync flag to use synchronized renderer (246a4b7c8bdd)
+* add conftest basic app (348868a93513)
+
+### Fix
+
+* enable plotting different findings (203bdcc29767)
+* do not fail on plain plots call (8b16ad9c9ffb)
+
+### Documentation
+
+* add different plot states (38259b708d53)
+* extend interface documentation (20bd712d4d94)
+
 ## v0.4.0
 
 ### Feature
