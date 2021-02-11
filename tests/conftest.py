@@ -43,15 +43,17 @@ def extract(files):
     # TODO: MOVE TO QUEUEMO?
     todo = []
     for source in files:
-
-        def runme(source=source):
-            outpath = power.link(source)
-            cmd = f'queuemo_single -i {source} -o {outpath} --create'
-            utila.log(cmd)
-            utila.run(cmd)
-            cmd = f'qcon -i {outpath} --root {CACHED} --publish'
-            utila.log(cmd)
-            utila.run(cmd)
-
         todo.append(functools.partial(runme, source))
     utila.fork(*todo, worker=4)
+
+
+def runme(source: str):
+    outpath = power.link(source)
+    cmd = f'queuemo_single -i {source} -o {outpath} --create'
+    utila.run(cmd, verbose=True)
+    cmd = f'qcon -i {outpath} --root {CACHED} --publish'
+    utila.run(cmd, verbose=True)
+    for version in ['10.1.0', '10.1.1', '10.1.2', '10.2.0']:
+        cmd = (f'qcon -i {outpath} --root {CACHED} --publish '
+               f'--overwrite_version={version}')
+        utila.run(cmd, verbose=True)
