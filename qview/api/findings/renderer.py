@@ -90,19 +90,27 @@ def data(
     counted = [collected[item] for item in versions]
     if findings is not None:
         if isinstance(counted[0], list):  # TODO: REMOVE THIS HACK
-            counted = transpose(counted)
+            # use -1 for non existing data points
+            counted = transpose(counted, default=-1)
     return versions, counted
 
 
-def transpose(counted):
+def transpose(counted, default=None):
     """\
     >>> transpose([[1, 16], [1, 16], [1, 16], [1, 16], [1, 16]])
     [[1, 1, 1, 1, 1], [16, 16, 16, 16, 16]]
+    >>> transpose([[1, 0, 2], []], default=None)
+    [[1, None], [0, None], [2, None]]
     """
     # TODO: MOVE TO UTILA? USE NUMPY?
     result = []
     for index in range(len(counted[0])):
-        line = [item[index] for item in counted]
+        line = []
+        for item in counted:
+            try:
+                line.append(item[index])
+            except IndexError:
+                line.append(default)
         result.append(line)
     return result
 
