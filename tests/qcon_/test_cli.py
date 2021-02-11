@@ -56,7 +56,7 @@ def test_cli_publish_single(testdir, monkeypatch, capsys):
     assert 'dump:' in stdout
 
 
-def test_cli_publish_overwriteversion(testdir, monkeypatch, capsys):
+def test_cli_publish_overwriteversion(testdir, monkeypatch):
     version = '13.13.13'
     source = power.link(power.HOME025_PDF)
     cmd = (f'-i {source} --publish '

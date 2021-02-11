@@ -16,8 +16,6 @@ Different Documents             Different Findings          Images      Case
 
 """
 
-import collections
-
 import flask
 import utila
 
@@ -39,13 +37,17 @@ def plots():
     plot_info, grouped = select(documents, versions, findings)
 
     shortpath = [item['path'] for item in plot_info]
-    qview.api.findings.renderer.add_todo(shortpath, grouped, versions)
+    qview.api.findings.renderer.add_todo(shortpath, grouped, versions, findings)
 
     dumped = flask.jsonify({'plots': plot_info})
     return dumped
 
 
-def select(documents, versions: list, findings) -> dict:
+def select(
+        documents: utila.Strings,
+        versions: utila.Strings,
+        findings: utila.Strings,
+) -> dict:
     # TODO: ADD FINDINGS
     root = cached.root()
     collected: cached.CachedResults = cached.load_root(

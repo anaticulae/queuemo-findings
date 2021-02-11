@@ -25,23 +25,30 @@ def render(
         legend: str = None,
         findings: set = None,
 ) -> bytes:
+    """\
+    # Title: Draw title if selective findings are used. If no selective
+             findings are used, the title is rendered in finding legend.
+    """
+    title = documents[0].document if documents and findings else ''
     if not legend and documents:
         legend = documents[0].document
     versions, counted = data(documents, versions=versions, findings=findings)
+    legend = list(findings) if findings else [legend]
     versions = [f'v{item}' for item in versions]
     ymax_ = ymax(documents) * 1.1
     painted = painter.plot_render(
         counted,
         labels=versions,
-        legends=[legend],
+        legends=legend,
         width=11.16,
         ylim=(0, ymax_),
+        title=title,
     )
     result = painter.png(painted)
     return result
 
 
-def add_todo(paths, documents, versions):
+def add_todo(paths, documents, versions, findings=None):
     workdir = qview.config.renderer_workdir()
     todo = []
     for path, document in zip(paths, documents.values()):
@@ -50,7 +57,7 @@ def add_todo(paths, documents, versions):
             continue
         utila.file_create_binary(rendered)
         # render asynchronously
-        todo.append([rendered, document, versions])
+        todo.append([rendered, document, versions, findings])
     if not todo:
         return
     if qview.config.sync():
@@ -61,8 +68,8 @@ def add_todo(paths, documents, versions):
 
 
 def render_todo(todo):
-    for path, documents, versions in todo:
-        rendered = render(documents, versions=versions)
+    for path, documents, versions, findings in todo:
+        rendered = render(documents, versions=versions, findings=findings)
         utila.file_replace_binary(path, rendered)
 
 
@@ -73,7 +80,7 @@ def data(
 ) -> list:
     if not versions:
         versions = versions_(documents)
-    collected = collections.defaultdict(int)
+    collected = collections.defaultdict(int if not findings else list)
     for document in documents:
         collected[document.version] = count_findings(document, findings)
     counted = [collected[item] for item in versions]
@@ -98,6 +105,8 @@ def ymax(documents) -> int:
 
 def count_findings(document, findings):
     collected = document.findings
-    if findings:
-        collected = [item for item in document.findings if item in findings]
-    return len(collected)
+    if not findings:
+        return len(collected)
+    document_findings = [finding.msgid for finding in document]
+    collected = [document_findings.count(finding) for finding in findings]
+    return collected

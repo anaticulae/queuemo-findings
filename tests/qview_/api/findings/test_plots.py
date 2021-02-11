@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import painter
 import utila
 
@@ -42,6 +40,16 @@ def test_plots_get_homework25(client, testdir, monkeypatch):
 
 def test_plots_get_homework25_error1220_error1221(client, testdir, monkeypatch):
     cmd = 'findings/plots?documents=homework25&findings=E1220&findings=E1221'
+    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+        content = tests.qview_.apicall(client, cmd)
+    assert len(content['plots']) == 1
+    rendered = utila.file_list('renderer', absolute=True)
+    assert len(rendered) == 1
+    painter.show_figure(rendered[0])
+
+
+def test_plots_selective_findings(client, testdir, monkeypatch):
+    cmd = 'findings/plots?documents=homework25&findings=E1220&findings=W4001'
     with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, cmd)
     assert len(content['plots']) == 1
