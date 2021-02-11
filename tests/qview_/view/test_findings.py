@@ -22,12 +22,12 @@ def test_view_plots_homework25(client, testdir, monkeypatch):
             client,
             'findings/plots?documents%5B%5D=homework25',
         )
-    assert len(content['plots']) == 1
-    selected_plot = content['plots'][0]['path']
-    images = tests.qview_.content(
-        client,
-        f'/plots/{selected_plot}',
-        raw=True,
-    )
+        assert len(content['plots']) == 1
+        selected_plot = content['plots'][0]['path']
+        images = tests.qview_.content(
+            client,
+            f'/plots/{selected_plot}',
+            raw=True,
+        )
     images = images.data
     assert len(images) > 200
