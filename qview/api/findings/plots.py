@@ -6,6 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+Different Documents             Different Findings          Images      Case
+1                               5                           1           A
+
+3                               5                           3           B
+
+5                               0                           5           C
+
+"""
 
 import collections
 
