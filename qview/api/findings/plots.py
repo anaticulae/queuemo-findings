@@ -35,8 +35,11 @@ def plots():
     return dumped
 
 
-def getdict(collection):
-    # TODO: HACKY
+def getdict(collection) -> dict:
+    """Convert hacky rpc request to usable dict data structure.
+
+    Hint: May remove this HACK later.
+    """
     result = {}
     for key in collection:
         result[key.replace('[]', '')] = collection.getlist(key)
@@ -74,7 +77,7 @@ def select(documents, versions: list, findings) -> dict:
     return result, grouped
 
 
-def groupby_document(documents) -> dict:
+def groupby_document(documents: cached.CachedResults) -> dict:
     collected = collections.defaultdict(list)
     for document in documents:
         if not document:
@@ -84,6 +87,6 @@ def groupby_document(documents) -> dict:
     return result
 
 
-def hashed(findings) -> str:
+def hashed(findings: cached.CachedFindings) -> str:
     merged = ''.join([item.msgid for item in findings])
     return hash(merged)
