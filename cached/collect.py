@@ -43,6 +43,8 @@ def collect(path: str) -> 'cached.CachedResult':
 def document_version_config(path: str) -> tuple:
     job = link.load_job(os.path.join(path, 'info.yaml'))
     document = job.title.replace('.pdf', '')
+    document = document.replace(' ', '')
+    document = document.lower()
     if os.path.exists(path):
         loaded = link.load_debug(path)
     else:
