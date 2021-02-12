@@ -29,7 +29,11 @@ def loads(raw: bytes) -> cached.CachedResult:
     return document
 
 
-def dump_result(document: cached.CachedResult, root: str) -> str:
+def dump_result(
+        document: cached.CachedResult,
+        root: str,
+        overwrite: bool = True,
+) -> str:
     if document.version is None:
         utila.error(f'could not dump {document.document}, '
                     'require --overwrite_version parameter')
@@ -41,7 +45,10 @@ def dump_result(document: cached.CachedResult, root: str) -> str:
     os.makedirs(parent, exist_ok=True)  # create parent
     utila.debug(f'write: {path}')
     dumped = cached.dumps(document)
-    utila.file_create_binary(path, dumped)
+    writer = utila.file_create_binary
+    if overwrite:
+        writer = utila.file_replace_binary
+    writer(path, dumped)
     return path
 
 
@@ -61,12 +68,16 @@ def load_result(
     return document
 
 
-def dump_root(documents: cached.CachedResults, root: str):
+def dump_root(
+        documents: cached.CachedResults,
+        root: str,
+        overwrite: bool = True,
+):
     assert os.path.exists(root), str(root)
     if isinstance(documents, cached.CachedResult):
         documents = [documents]
     for document in documents:
-        dump_result(document, root)
+        dump_result(document, root, overwrite=overwrite)
 
 
 def load_root(
