@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.5.1
+
+### Feature
+
+* add grid to increase readability (4d39d7489f9f)
+
+### Fix
+
+* beautify document name (df2ccca31a93)
+* overwrite result if already exists (7bde3720998f)
+* use default value for non existing data point (77c329568e23)
+* limit max finding count to selected findings (c33df0575e16)
+
 ## v0.5.0
 
 ### Feature
