@@ -92,10 +92,10 @@ def data(
     for document in documents:
         collected[document.version] = count_findings(document, findings)
     counted = [collected[item] for item in versions]
-    if findings is not None:
-        if isinstance(counted[0], list):  # TODO: REMOVE THIS HACK
-            # use -1 for non existing data points
-            counted = transpose(counted, default=-1)
+    # if findings is not None:
+    if isinstance(counted[0], list):  # TODO: REMOVE THIS HACK
+        # use -1 for non existing data points
+        counted = transpose(counted, default=-1)
     return versions, counted
 
 
@@ -108,7 +108,8 @@ def transpose(counted, default=None):
     """
     # TODO: MOVE TO UTILA? USE NUMPY?
     result = []
-    for index in range(len(counted[0])):
+    length = max([len(item) for item in counted])
+    for index in range(length):
         line = []
         for item in counted:
             try:
