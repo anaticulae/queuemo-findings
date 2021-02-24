@@ -95,7 +95,7 @@ def data(
     # if findings is not None:
     if isinstance(counted[0], list):  # TODO: REMOVE THIS HACK
         # use -1 for non existing data points
-        counted = transpose(counted, default=-1)
+        counted = transpose(counted, default=0)
     return versions, counted
 
 
