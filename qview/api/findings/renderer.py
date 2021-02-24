@@ -35,6 +35,10 @@ def render(
         legend = documents[0].document
     versions, counted = data(documents, versions=versions, findings=findings)
     legend = list(findings) if findings else [legend]
+    if not counted:
+        utila.error(f'empty: {counted} replace with zero for: {documents}')
+        utila.error(f'versions: {versions} findings: {findings}')
+        counted = [0] * len(legend)
     versions_raw = [f'v{item}' for item in versions]
     ymax_ = ymax(documents, findings) * 1.1
     diffdoc = qview.api.findings.utils.different_documents(documents)
