@@ -16,6 +16,8 @@ Different Documents             Different Findings          Images      Case
 
 """
 
+import typing
+
 import flask
 import utila
 
@@ -33,13 +35,15 @@ def plots():
     data = getdict(flask.request.args)
     documents, versions = data.get('documents', []), data.get('versions', [])
     findings = set(data.get('findings', []))
-
-    plot_info, grouped = select(documents, versions, findings)
-
-    shortpath = [item['path'] for item in plot_info]
-    qview.api.findings.renderer.add_todo(shortpath, grouped, versions, findings)
-
-    dumped = flask.jsonify({'plots': plot_info})
+    plotinfo, grouped = select(documents, versions, findings)
+    shortpath = [item['path'] for item in plotinfo]
+    qview.api.findings.renderer.add_todo(
+        shortpath,
+        grouped,
+        versions,
+        findings,
+    )
+    dumped = flask.jsonify({'plots': plotinfo})
     return dumped
 
 
@@ -47,7 +51,7 @@ def select(
         documents: utila.Strings,
         versions: utila.Strings,
         findings: utila.Strings,
-) -> dict:
+) -> typing.Tuple[list, dict]:
     # TODO: ADD FINDINGS
     root = cached.root()
     collected: cached.CachedResults = cached.load_root(
