@@ -10,6 +10,7 @@
 import painter
 import utila
 
+import qview.view.findings
 import tests.conftest
 import tests.qview_
 
@@ -56,3 +57,22 @@ def test_plots_selective_findings(client, testdir, monkeypatch):
     rendered = utila.file_list('renderer', absolute=True)
     assert len(rendered) == 1
     painter.show_figure(rendered[0])
+
+
+def test_plots_all(client, testdir, monkeypatch):
+    """Select all possible parameter and for two resources."""
+    documents = 'documents%5B%5D=homework25&documents%5B%5D=howtowrite_pages9'
+    versions = [f'versions%5B%5D={item}' for item in tests.conftest.VERSIONS]
+    versions = '&'.join(versions)
+    findings = qview.view.findings.findings(tests.conftest.CACHED)
+    findings = 'findings%5B%5D=' + '&findings%5B%5D='.join(findings)
+    call = f'findings/plots?{documents}&{versions}&{findings}'
+    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+        content = tests.qview_.apicall(client, call)
+        plots = content['plots']
+        home25, howto = plots[0]['path'], plots[1]['path']
+        home25 = tests.qview_.apicall(client, f'/plots/{home25}', prefix='')
+        howto = tests.qview_.apicall(client, f'/plots/{howto}', prefix='')
+    # plots contain content
+    assert len(home25) == 49451
+    assert len(howto) == 51181
