@@ -21,7 +21,11 @@ def decode(
         expected=None,
 ) -> dict:
     """Read binary data from response and convert them to str"""
-    result = response.data.decode('utf8')
+    try:
+        result = response.data.decode('utf8')
+    except UnicodeDecodeError:
+        # bytes response
+        return response.data
     if expected is not None:
         assert response.status_code == expected
     with contextlib.suppress(json.decoder.JSONDecodeError):
