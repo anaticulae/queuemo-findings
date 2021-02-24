@@ -54,9 +54,10 @@ def collect(attribute: str):
     return result
 
 
-def findings():
+def findings(root=None):
+    root = root if root else cached.root()
     collected = set()
-    files = cached.load_root(cached.root())
+    files = cached.load_root(root)
     for item in files:
         collected.update({finding.msgid for finding in item.findings})
     result = sorted(list(collected))
