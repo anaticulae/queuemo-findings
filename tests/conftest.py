@@ -29,6 +29,7 @@ RESOURCES = [
 ]
 
 CACHED = os.path.join(power.generated(), 'dev_cached_root')
+VERSIONS = ['10.1.0', '10.1.1', '10.1.2', '10.2.0']
 
 qview.config.SYNC = True
 
@@ -53,7 +54,7 @@ def runme(source: str):
     utila.run(cmd, verbose=True)
     cmd = f'qcon -i {outpath} --root {CACHED} --publish'
     utila.run(cmd, verbose=True)
-    for version in ['10.1.0', '10.1.1', '10.1.2', '10.2.0']:
+    for version in VERSIONS:
         cmd = (f'qcon -i {outpath} --root {CACHED} --publish '
                f'--overwrite_version={version}')
         utila.run(cmd, verbose=True)
