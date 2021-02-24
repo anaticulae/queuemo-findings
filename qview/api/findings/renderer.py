@@ -47,7 +47,7 @@ def render(
         *(counted if usestar else [counted]),
         labels=versions_raw,
         legends=legend,
-        width=11.16,
+        width=15.16,
         ylim=(0, ymax_),
         title=title,
         grid=True,
