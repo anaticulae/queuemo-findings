@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* increase width of rendered plot (363f8f19345f)
+* set zero as non existing value (a6f324581802)
+* add options to collect findings by folder (4a25c8f501b5)
+
+### Fix
+
+* always fill empty data (9eabe067c00b)
+* return 404 to avoid client browser caching (eee0c8cf5d45)
+* do not break rendering with empty data (e511ebc69f57)
+* beautify document name (1caa0def7f20)
+
 ## v0.5.1
 
 ### Feature
