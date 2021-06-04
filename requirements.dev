@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-power==1.3.0
-utilatest==0.4.0
+power==1.4.6
+utilatest==0.5.3
 
-queuemo==1.10.3
+queuemo==1.11.0
