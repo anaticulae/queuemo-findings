@@ -61,7 +61,7 @@ def test_plots_selective_findings(client, testdir, monkeypatch):
 
 def test_plots_all(client, testdir, monkeypatch):
     """Select all possible parameter and for two resources."""
-    documents = 'documents%5B%5D=homework25&documents%5B%5D=howtowrite_pages9'
+    documents = 'documents%5B%5D=homework25&documents%5B%5D=order009'
     versions = [f'versions%5B%5D={item}' for item in tests.conftest.VERSIONS]
     versions = '&'.join(versions)
     findings = qview.view.findings.findings(tests.conftest.CACHED)
@@ -70,9 +70,9 @@ def test_plots_all(client, testdir, monkeypatch):
     with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, call)
         plots = content['plots']
-        home25, howto = plots[0]['path'], plots[1]['path']
+        home25, order009 = plots[0]['path'], plots[1]['path']
         home25 = tests.qview_.apicall(client, f'/plots/{home25}', prefix='')
-        howto = tests.qview_.apicall(client, f'/plots/{howto}', prefix='')
+        order009 = tests.qview_.apicall(client, f'/plots/{order009}', prefix='')
     # plots contain content
-    assert len(home25) == 49451
-    assert len(howto) == 51181
+    assert len(home25) == 41867
+    assert len(order009) == 41679
