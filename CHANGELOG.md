@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.6.1
+
+### Fix
+
+* do not fail on empty user selection (d3da04d00c7c)
+
 ## v0.6.0
 
 ### Feature
