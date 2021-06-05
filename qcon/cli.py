@@ -48,7 +48,7 @@ def main():
         ),
     )
     args = utila.parse(parser)
-    inputpath, _ = utila.sources(args)  # pylint:disable=W0612
+    inputpath, _ = utila.sources(args)  # pylint:disable=W0612,W0632
 
     root = args.get('root', None)
     if not root:

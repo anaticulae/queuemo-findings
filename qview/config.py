@@ -8,6 +8,7 @@
 # =============================================================================
 
 import os
+import sys
 
 import configo
 import utila
@@ -23,7 +24,7 @@ def renderer_workdir() -> str:
         path = configo.env('DEV_QVIEW_RENDERER_TMP')
     except KeyError:
         utila.error('require global env `DEV_QVIEW_RENDERER_TMP`')
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
     os.makedirs(path, exist_ok=True)
     return path
 

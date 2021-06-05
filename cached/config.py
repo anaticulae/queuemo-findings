@@ -8,6 +8,7 @@
 # =============================================================================
 
 import os
+import sys
 
 import configo
 import utila
@@ -18,6 +19,6 @@ def root() -> str:
         path = configo.env('DEV_CACHED_ROOT')
     except KeyError:
         utila.error('require global env `DEV_CACHED_ROOT`')
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
     os.makedirs(path, exist_ok=True)
     return path
