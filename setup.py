@@ -49,8 +49,6 @@ if __name__ == "__main__":
             'qview.view',
         ],
         entry_points={
-            'console_scripts': [
-                'qcon = qcon.cli:main',
-            ],
+            'console_scripts': ['qcon = qcon.cli:main',],
         },
     )

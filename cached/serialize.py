@@ -30,9 +30,9 @@ def loads(raw: bytes) -> cached.CachedResult:
 
 
 def dump_result(
-        document: cached.CachedResult,
-        root: str,
-        overwrite: bool = True,
+    document: cached.CachedResult,
+    root: str,
+    overwrite: bool = True,
 ) -> str:
     if document.version is None:
         utila.error(f'could not dump {document.document}, '
@@ -53,10 +53,10 @@ def dump_result(
 
 
 def load_result(
-        document: str = None,
-        version: str = None,
-        config: str = None,
-        root: str = None,
+    document: str = None,
+    version: str = None,
+    config: str = None,
+    root: str = None,
 ) -> cached.CachedResult:
     named = name(version=version, config=config)
     path = os.path.join(root, document, named)
@@ -69,9 +69,9 @@ def load_result(
 
 
 def dump_root(
-        documents: cached.CachedResults,
-        root: str,
-        overwrite: bool = True,
+    documents: cached.CachedResults,
+    root: str,
+    overwrite: bool = True,
 ):
     assert os.path.exists(root), str(root)
     if isinstance(documents, cached.CachedResult):
@@ -81,10 +81,10 @@ def dump_root(
 
 
 def load_root(
-        root: str,
-        document: str = None,
-        version: str = None,
-        config: str = None,
+    root: str,
+    document: str = None,
+    version: str = None,
+    config: str = None,
 ) -> cached.CachedResults:
     result = []
     for item in collect_root(root, document, version, config):
@@ -99,10 +99,10 @@ def load_root(
 
 
 def collect_root(
-        root: str,
-        document: str = None,
-        version: str = None,
-        config: str = None,
+    root: str,
+    document: str = None,
+    version: str = None,
+    config: str = None,
 ) -> 'paths':
     collected = []
     if isinstance(document, str):

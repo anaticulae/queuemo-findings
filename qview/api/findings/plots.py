@@ -48,9 +48,9 @@ def plots():
 
 
 def select(
-        documents: utila.Strings,
-        versions: utila.Strings,
-        findings: utila.Strings,
+    documents: utila.Strings,
+    versions: utila.Strings,
+    findings: utila.Strings,
 ) -> typing.Tuple[list, dict]:
     # TODO: ADD FINDINGS
     root = cached.root()

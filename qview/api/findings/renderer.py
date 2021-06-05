@@ -21,10 +21,10 @@ import qview.config
 
 
 def render(
-        documents: cached.CachedResults,
-        versions=None,
-        legend: str = None,
-        findings: set = None,
+    documents: cached.CachedResults,
+    versions=None,
+    legend: str = None,
+    findings: set = None,
 ) -> bytes:
     """\
     # Title: Draw title if selective findings are used. If no selective
@@ -82,9 +82,9 @@ def render_todo(todo):
 
 
 def data(
-        documents: cached.CachedResults,
-        versions=None,
-        findings: set = None,
+    documents: cached.CachedResults,
+    versions=None,
+    findings: set = None,
 ) -> list:
     if not versions:
         versions = versions_(documents)

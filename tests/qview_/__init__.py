@@ -17,8 +17,8 @@ import qview.config
 
 
 def decode(
-        response,
-        expected=None,
+    response,
+    expected=None,
 ) -> dict:
     """Read binary data from response and convert them to str"""
     try:
@@ -36,10 +36,10 @@ def decode(
 
 
 def content(
-        client,
-        request: str,
-        expected=http.HTTPStatus.OK,
-        raw: bool = False,
+    client,
+    request: str,
+    expected=http.HTTPStatus.OK,
+    raw: bool = False,
 ):
     response = client.get(request, follow_redirects=True)
     assert response.status_code == expected, request + str(response)
@@ -49,10 +49,10 @@ def content(
 
 
 def apicall(
-        client,
-        request: str,
-        prefix=qview.config.API_PREFIX,
-        expected=http.HTTPStatus.OK,
+    client,
+    request: str,
+    prefix=qview.config.API_PREFIX,
+    expected=http.HTTPStatus.OK,
 ):
     cmd = prefix + request
     response = client.get(cmd)
