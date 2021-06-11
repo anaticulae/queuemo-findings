@@ -41,7 +41,7 @@ def collect(path: str) -> 'cached.CachedResult':
 
 
 def document_version_config(path: str) -> tuple:
-    job = link.load_job(os.path.join(path, 'info.yaml'))
+    job = link.load_job(os.path.join(path, link.JOB_FILE_NAME))
     document = job.title.replace('.pdf', '')
     # beautify document name
     document = document.replace('-', '_')
