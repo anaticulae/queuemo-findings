@@ -13,6 +13,8 @@ import json.decoder
 import os
 import threading
 
+import configo
+
 import qview.config
 
 
@@ -75,4 +77,5 @@ def patch_todo(monkeypatch, testdir, root=None):
         with monkeypatch.context() as context:
             context.setenv('DEV_QVIEW_RENDERER_TMP', workdir)
             context.setenv('DEV_CACHED_ROOT', root)
+            configo.env.cache_clear()
             yield workdir
