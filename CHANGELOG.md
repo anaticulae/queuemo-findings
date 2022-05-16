@@ -127,4 +127,3 @@ Every noteable change is logged here.
 * add basic documentation (c8dcd54fcc72)
 
 ## v0.0.0 Initial release
-
