@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.6.3
+
+### Documentation
+
+* adjust modules path (fb7ece502df5)
+* Happy New Year! (c487cfd6530c)
+
 ## v0.6.2
 
 ### Fix
