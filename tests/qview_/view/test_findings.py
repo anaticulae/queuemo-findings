@@ -15,12 +15,12 @@ def test_findings(client):
     assert '<h1>Findings</h1>' in findings
 
 
-def test_view_plots_homework25(client, testdir, monkeypatch):
+def test_view_plots_home025(client, testdir, monkeypatch):
     with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
         # TODO: SIMPLIFY!
         content = tests.qview_.apicall(
             client,
-            'findings/plots?documents%5B%5D=homework25',
+            'findings/plots?documents%5B%5D=home025',
         )
         assert len(content['plots']) == 1
         selected_plot = content['plots'][0]['path']
