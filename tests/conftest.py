@@ -24,8 +24,8 @@ PACKAGE = qcon.PROCESS
 power.setup(qcon.ROOT)
 
 RESOURCES = [
-    power.ORDER009_PDF,
     power.HOME025_PDF,
+    power.ORDER009_PDF,
 ]
 
 CACHED = os.path.join(power.generated(), 'dev_cached_root')
