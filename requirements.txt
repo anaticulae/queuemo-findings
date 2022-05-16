@@ -15,5 +15,5 @@ link>=2.14.0<3.0.0
 
 painter>=0.12.2<1.0.0
 
-Flask==1.1.2
-Flask-Bootstrap==3.3.7.1
+Flask>=1.1.2<2.0.0
+Flask-Bootstrap>=3.3.7.1<4.0.0.0
