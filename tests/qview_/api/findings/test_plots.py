@@ -70,9 +70,9 @@ def test_plots_all(client, testdir, monkeypatch):
     with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, call)
         plots = content['plots']
-        home25, order009 = plots[0]['path'], plots[1]['path']
-        home25 = tests.qview_.apicall(client, f'/plots/{home25}', prefix='')
+        home025, order009 = plots[0]['path'], plots[1]['path']
+        home025 = tests.qview_.apicall(client, f'/plots/{home025}', prefix='')
         order009 = tests.qview_.apicall(client, f'/plots/{order009}', prefix='')
     # plots contain content
-    assert len(home25) == 41867
-    assert len(order009) == 41679
+    assert len(home025) >= 41867
+    assert len(order009) >= 48438
