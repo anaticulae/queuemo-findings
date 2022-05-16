@@ -35,3 +35,8 @@ class CachedResult:
 
 
 CachedResults = typing.List[CachedResult]
+
+
+def hashed(findings: CachedFindings) -> str:
+    merged = ''.join([item.msgid for item in findings])
+    return hash(merged)

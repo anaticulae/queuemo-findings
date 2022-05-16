@@ -22,6 +22,7 @@ import flask
 import utila
 
 import cached
+import cached.data
 import qview.api.findings
 import qview.api.findings.renderer
 import qview.api.findings.utils
@@ -82,7 +83,7 @@ def png_path(docname, versions, docs, findings) -> str:
         selected_findings = [
             item for item in documents_findings if item.msgid in findings
         ]
-        path += f'_{hashed(selected_findings)}'
+        path += f'_{cached.data.hashed(selected_findings)}'
     path = f'{path}.png'
     return path
 
@@ -91,11 +92,6 @@ def version_raw(versions: list) -> str:
     versions: str = '_'.join(versions)
     versions = versions.replace('.', '_')
     return versions
-
-
-def hashed(findings: cached.CachedFindings) -> str:
-    merged = ''.join([item.msgid for item in findings])
-    return hash(merged)
 
 
 def getdict(collection) -> dict:
