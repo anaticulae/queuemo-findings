@@ -59,12 +59,11 @@ def select(
         document=documents,
         version=versions,
     )
-    versions: str = '_'.join(versions)
+    versions: str = version_raw(versions)
     grouped = qview.api.findings.utils.groupby_document(collected)
     result = []
-    versions = versions.replace('.', '_')
-    for document_name, docs in grouped.items():
-        path = f'{document_name}_{versions}'
+    for docname, docs in grouped.items():
+        path = f'{docname}_{versions}'
         # if item.config:
         #     path += f'_{item.config}'
         if findings:
@@ -75,12 +74,18 @@ def select(
             path += f'_{hashed(selected_findings)}'
         path = f'{path}.png'
         raw = {
-            'document': document_name,
+            'document': docname,
             'version': versions,
             'path': path,
         }
         result.append(raw)
     return result, grouped
+
+
+def version_raw(versions: list) -> str:
+    versions: str = '_'.join(versions)
+    versions = versions.replace('.', '_')
+    return versions
 
 
 def hashed(findings: cached.CachedFindings) -> str:
