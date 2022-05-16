@@ -63,16 +63,7 @@ def select(
     grouped = qview.api.findings.utils.groupby_document(collected)
     result = []
     for docname, docs in grouped.items():
-        path = f'{docname}_{versions}'
-        # if item.config:
-        #     path += f'_{item.config}'
-        if findings:
-            documents_findings = utila.flatten([item.findings for item in docs])
-            selected_findings = [
-                item for item in documents_findings if item.msgid in findings
-            ]
-            path += f'_{hashed(selected_findings)}'
-        path = f'{path}.png'
+        path = png_path(docname, versions, docs, findings)
         raw = {
             'document': docname,
             'version': versions,
@@ -80,6 +71,20 @@ def select(
         }
         result.append(raw)
     return result, grouped
+
+
+def png_path(docname, versions, docs, findings) -> str:
+    path = f'{docname}_{versions}'
+    # if item.config:
+    #     path += f'_{item.config}'
+    if findings:
+        documents_findings = utila.flatten([item.findings for item in docs])
+        selected_findings = [
+            item for item in documents_findings if item.msgid in findings
+        ]
+        path += f'_{hashed(selected_findings)}'
+    path = f'{path}.png'
+    return path
 
 
 def version_raw(versions: list) -> str:
