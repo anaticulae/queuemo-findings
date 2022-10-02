@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import tests.conftest
 import tests.qview_
 
 
@@ -15,6 +16,7 @@ def test_findings(client):
     assert '<h1>Findings</h1>' in findings
 
 
+@tests.conftest.require_cached
 def test_view_plots_home025(client, testdir, mp):
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         # TODO: SIMPLIFY!

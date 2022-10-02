@@ -36,6 +36,15 @@ VERSIONS = ['10.1.0', '10.1.1', '10.1.2', '10.2.0']
 qview.config.SYNC = True
 
 
+def cached() -> bool:
+    if not utila.exists(CACHED):
+        return False
+    return len(utila.file_list(CACHED)) > 0
+
+
+require_cached = pytest.mark.skipif(not cached(), reason='require CACHED')
+
+
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
     power.run()

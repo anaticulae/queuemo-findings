@@ -21,6 +21,7 @@ def test_plots_get_empty(client, testdir, mp):
     assert not content['plots']
 
 
+@tests.conftest.require_cached
 def test_plots_get_root(client, testdir, mp):
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, 'findings/plots')
@@ -28,6 +29,7 @@ def test_plots_get_root(client, testdir, mp):
     assert len(utila.file_list('renderer')) == 2
 
 
+@tests.conftest.require_cached
 def test_plots_get_home025(client, testdir, mp):
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         # TODO: SIMPLIFY!
@@ -39,6 +41,7 @@ def test_plots_get_home025(client, testdir, mp):
     assert len(utila.file_list('renderer')) == 1
 
 
+@tests.conftest.require_cached
 def test_plots_get_home025_error1220_error1221(client, testdir, mp):
     cmd = 'findings/plots?documents=home025&findings=E1220&findings=E1221'
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
@@ -49,6 +52,7 @@ def test_plots_get_home025_error1220_error1221(client, testdir, mp):
     painter.show_figure(rendered[0])
 
 
+@tests.conftest.require_cached
 def test_plots_selective_findings(client, testdir, mp):
     cmd = 'findings/plots?documents=home025&findings=E1220&findings=W4001'
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
@@ -59,6 +63,7 @@ def test_plots_selective_findings(client, testdir, mp):
     painter.show_figure(rendered[0])
 
 
+@tests.conftest.require_cached
 def test_plots_all(client, testdir, mp):
     """Select all possible parameter and for two resources."""
     documents = 'documents%5B%5D=home025&documents%5B%5D=order009'

@@ -8,10 +8,12 @@
 # =============================================================================
 
 import power
+import utilatest
 
 import cached
 
 
+@utilatest.requires(power.HOME025_PDF)
 def test_collect():
     source = power.link(power.HOME025_PDF)
     collected = cached.collect(source)

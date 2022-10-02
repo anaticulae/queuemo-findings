@@ -44,6 +44,7 @@ def test_cli_publish_invalid(testdir, mp, capsys):
     assert 'could not dump any data' in stderr
 
 
+@utilatest.requires(power.HOME025_PDF)
 def test_cli_publish_single(testdir, mp, capsys):
     source = power.link(power.HOME025_PDF)
     tests.qcon_.run(
@@ -56,6 +57,7 @@ def test_cli_publish_single(testdir, mp, capsys):
     assert 'dump:' in stdout
 
 
+@utilatest.requires(power.HOME025_PDF)
 def test_cli_publish_overwriteversion(testdir, mp):
     version = '13.13.13'
     source = power.link(power.HOME025_PDF)

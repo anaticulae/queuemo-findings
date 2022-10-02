@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import utilatest
 
 import cached
 
@@ -52,6 +53,7 @@ def test_dump_load_result(testdir):
     assert loaded == data
 
 
+@utilatest.requires(power.HOME025_PDF)
 def test_collect_and_dump(testdir):
     source = power.link(power.HOME025_PDF)
     document = cached.collect(source)

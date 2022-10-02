@@ -11,6 +11,7 @@ import os
 
 import power
 import pytest
+import utilatest
 
 import cached
 import tests.qcon_
@@ -18,6 +19,9 @@ import tests.qcon_
 
 @pytest.fixture
 def cached_example(testdir, mp):
+    utilatest.fixture_requires(power.HOME025_PDF)
+    utilatest.fixture_requires(power.ORDER009_PDF)
+
     cache = os.path.join(testdir.tmpdir, 'cache')
     os.makedirs(cache)
 
