@@ -17,14 +17,14 @@ import tests.qcon_
 
 
 @pytest.fixture
-def cached_example(testdir, monkeypatch):
+def cached_example(testdir, mp):
     cache = os.path.join(testdir.tmpdir, 'cache')
     os.makedirs(cache)
 
     home25 = power.link(power.HOME025_PDF)
     order09 = power.link(power.ORDER009_PDF)
     cmd = f'-i {home25} -i {order09} --publish --root {cache}'
-    tests.qcon_.run(cmd, monkeypatch=monkeypatch)
+    tests.qcon_.run(cmd, mp=mp)
 
     loaded = cached.load_root(cache)
     assert len(loaded) == 2

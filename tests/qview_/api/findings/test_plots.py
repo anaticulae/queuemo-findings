@@ -15,21 +15,21 @@ import tests.conftest
 import tests.qview_
 
 
-def test_plots_get_empty(client, testdir, monkeypatch):
-    with tests.qview_.patch_todo(monkeypatch, testdir):
+def test_plots_get_empty(client, testdir, mp):
+    with tests.qview_.patch_todo(mp, testdir):
         content = tests.qview_.apicall(client, 'findings/plots')
     assert not content['plots']
 
 
-def test_plots_get_root(client, testdir, monkeypatch):
-    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+def test_plots_get_root(client, testdir, mp):
+    with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, 'findings/plots')
     assert len(content['plots']) == 2
     assert len(utila.file_list('renderer')) == 2
 
 
-def test_plots_get_home025(client, testdir, monkeypatch):
-    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+def test_plots_get_home025(client, testdir, mp):
+    with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         # TODO: SIMPLIFY!
         content = tests.qview_.apicall(
             client,
@@ -39,9 +39,9 @@ def test_plots_get_home025(client, testdir, monkeypatch):
     assert len(utila.file_list('renderer')) == 1
 
 
-def test_plots_get_home025_error1220_error1221(client, testdir, monkeypatch):
+def test_plots_get_home025_error1220_error1221(client, testdir, mp):
     cmd = 'findings/plots?documents=home025&findings=E1220&findings=E1221'
-    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+    with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, cmd)
     assert len(content['plots']) == 1
     rendered = utila.file_list('renderer', absolute=True)
@@ -49,9 +49,9 @@ def test_plots_get_home025_error1220_error1221(client, testdir, monkeypatch):
     painter.show_figure(rendered[0])
 
 
-def test_plots_selective_findings(client, testdir, monkeypatch):
+def test_plots_selective_findings(client, testdir, mp):
     cmd = 'findings/plots?documents=home025&findings=E1220&findings=W4001'
-    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+    with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, cmd)
     assert len(content['plots']) == 1
     rendered = utila.file_list('renderer', absolute=True)
@@ -59,7 +59,7 @@ def test_plots_selective_findings(client, testdir, monkeypatch):
     painter.show_figure(rendered[0])
 
 
-def test_plots_all(client, testdir, monkeypatch):
+def test_plots_all(client, testdir, mp):
     """Select all possible parameter and for two resources."""
     documents = 'documents%5B%5D=home025&documents%5B%5D=order009'
     versions = [f'versions%5B%5D={item}' for item in tests.conftest.VERSIONS]
@@ -67,7 +67,7 @@ def test_plots_all(client, testdir, monkeypatch):
     findings = qview.view.findings.findings(tests.conftest.CACHED)
     findings = 'findings%5B%5D=' + '&findings%5B%5D='.join(findings)
     call = f'findings/plots?{documents}&{versions}&{findings}'
-    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+    with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, call)
         plots = content['plots']
         home025, order009 = plots[0]['path'], plots[1]['path']

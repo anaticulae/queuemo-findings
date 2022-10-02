@@ -18,12 +18,12 @@ run = functools.partial(  # pylint:disable=C0103
     utilatest.run_command,
     main=qcon.cli.main,
     process=qcon.PROCESS,
-    success=True,
+    expect=True,
 )
 
 failure = functools.partial(  # pylint:disable=C0103
     utilatest.run_command,
     main=qcon.cli.main,
     process=qcon.PROCESS,
-    success=False,
+    expect=False,
 )

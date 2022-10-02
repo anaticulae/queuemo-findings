@@ -66,7 +66,7 @@ LOCK = threading.Lock()
 
 
 @contextlib.contextmanager
-def patch_todo(monkeypatch, testdir, root=None):
+def patch_todo(mp, testdir, root=None):
     testdir.mkdir('renderer')
     workdir = os.path.join(testdir.tmpdir, 'renderer')
     if root is None:
@@ -74,7 +74,7 @@ def patch_todo(monkeypatch, testdir, root=None):
         root = os.path.join(testdir.tmpdir, 'root')
     with LOCK:
         # TODO: INVESTIGATE HOW TO THIS BETTER
-        with monkeypatch.context() as context:
+        with mp.context() as context:
             context.setenv('DEV_QVIEW_RENDERER_TMP', workdir)
             context.setenv('DEV_CACHED_ROOT', root)
             configo.env.cache_clear()

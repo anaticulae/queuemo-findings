@@ -15,8 +15,8 @@ def test_findings(client):
     assert '<h1>Findings</h1>' in findings
 
 
-def test_view_plots_home025(client, testdir, monkeypatch):
-    with tests.qview_.patch_todo(monkeypatch, testdir, tests.conftest.CACHED):
+def test_view_plots_home025(client, testdir, mp):
+    with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         # TODO: SIMPLIFY!
         content = tests.qview_.apicall(
             client,

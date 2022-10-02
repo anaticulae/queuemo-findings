@@ -20,8 +20,8 @@ import tests.qcon_
     '--help',
 ])
 @pytest.mark.usefixtures('testdir')
-def test_qcon_run(cmd, monkeypatch):
-    tests.qcon_.run(cmd, monkeypatch=monkeypatch)
+def test_qcon_run(cmd, mp):
+    tests.qcon_.run(cmd, mp=mp)
 
 
 def test_qcon_collect_home25(cached_example):
@@ -30,25 +30,25 @@ def test_qcon_collect_home25(cached_example):
     assert len(loaded) == 2
 
 
-def test_cli_list(cached_example, monkeypatch, capsys):
-    tests.qcon_.run(f'--list --root {cached_example}', monkeypatch=monkeypatch)
+def test_cli_list(cached_example, mp, capsys):
+    tests.qcon_.run(f'--list --root {cached_example}', mp=mp)
 
     stdout = utilatest.stdout(capsys).strip()
     assert len(stdout.splitlines()) == 2
     assert all((len(line.split()) == 3 for line in stdout.splitlines()))
 
 
-def test_cli_publish_invalid(testdir, monkeypatch, capsys):
-    tests.qcon_.failure('--publish', monkeypatch=monkeypatch)
+def test_cli_publish_invalid(testdir, mp, capsys):
+    tests.qcon_.failure('--publish', mp=mp)
     stderr = utilatest.stderr(capsys).strip()
     assert 'could not dump any data' in stderr
 
 
-def test_cli_publish_single(testdir, monkeypatch, capsys):
+def test_cli_publish_single(testdir, mp, capsys):
     source = power.link(power.HOME025_PDF)
     tests.qcon_.run(
         f'-i {source} --publish --root {testdir.tmpdir}',
-        monkeypatch=monkeypatch,
+        mp=mp,
     )
     assert len(utila.file_list(testdir.tmpdir)) == 1
     stdout = utilatest.stdout(capsys)
@@ -56,12 +56,12 @@ def test_cli_publish_single(testdir, monkeypatch, capsys):
     assert 'dump:' in stdout
 
 
-def test_cli_publish_overwriteversion(testdir, monkeypatch):
+def test_cli_publish_overwriteversion(testdir, mp):
     version = '13.13.13'
     source = power.link(power.HOME025_PDF)
     cmd = (f'-i {source} --publish '
            f'--root {testdir.tmpdir} --overwrite_version {version}')
-    tests.qcon_.run(cmd, monkeypatch=monkeypatch)
+    tests.qcon_.run(cmd, mp=mp)
     loaded = cached.load_root(testdir.tmpdir)
     assert len(loaded) == 1
     assert loaded[0].version == version
