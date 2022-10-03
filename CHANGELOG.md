@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.7.0 (2022-10-03)
+
+### Chore
+
+* add separate generator step (be34c2b628e4)
+* add Jenkinsfile (c614d01dfef0)
+* upgrade requirements.txt (726096c21179)
+
 ## v0.6.3
 
 ### Documentation
