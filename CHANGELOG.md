@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.1 (2022-10-18)
+
+### Chore
+
+* add Volume to share data (bc45b5271495)
+
 ## v0.8.0 (2022-10-18)
 
 ### Feature
