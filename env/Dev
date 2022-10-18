@@ -14,4 +14,9 @@ RUN pip install "qcon==0.8.0"
 ENV HOST=0.0.0.0
 ENV PORT=8100
 
+VOLUME /var/cached/
+
+ENV DEV_QVIEW_RENDERER_TMP=/tmp/renderer
+ENV DEV_CACHED_ROOT=/var/cached
+
 ENTRYPOINT qview --host $HOST --port $PORT -VVV
