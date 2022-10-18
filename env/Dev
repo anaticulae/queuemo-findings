@@ -1,0 +1,17 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2022 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+FROM 169.254.149.20:6001/arch_python_opengl:0.14.0
+
+RUN pip install "qcon==0.8.0"
+
+ENV HOST=0.0.0.0
+ENV PORT=8100
+
+ENTRYPOINT qview --host $HOST --port $PORT -VVV
