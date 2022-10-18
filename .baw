@@ -4,6 +4,3 @@ name = quality control
 
 source = cached
     qview
-
-[release]
-fail_on_finding = True
