@@ -6,11 +6,6 @@ pipeline{
         }
     }
 
-    parameters{
-        string(name: 'BRANCH', defaultValue: 'master')
-        booleanParam(name: 'RELEASE', defaultValue: false)
-    }
-
     environment{
         DEV_CACHED_ROOT='/tmp/dev/dev_cached_root'
     }
