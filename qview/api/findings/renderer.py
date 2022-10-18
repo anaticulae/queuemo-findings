@@ -108,7 +108,7 @@ def transpose(counted, default=None):
     """
     # TODO: MOVE TO UTILA? USE NUMPY?
     result = []
-    length = max([len(item) for item in counted])
+    length = max((len(item) for item in counted))
     for index in range(length):
         line = []
         for item in counted:

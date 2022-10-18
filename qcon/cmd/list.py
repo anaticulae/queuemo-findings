@@ -16,7 +16,7 @@ def run(root: str):
     utila.log()
     files = cached.load_root(root)
     for item in files:
-        line = '{:<40} {:<10}{:<10}'.format(
+        line = '{:<40} {:<10}{:<10}'.format(  # pylint:disable=C0209
             item.document,
             item.version,
             len(item.findings),

@@ -35,13 +35,11 @@ def show_findings():
 @findings_.route('/plots/<string:image>')
 def view_plot(image: str = None):
     workdir = qview.config.renderer_workdir()
-
     image = os.path.join(workdir, image)
     if not os.path.exists(image) or not utila.file_read_binary(image):
         return 'image does not exists', 404
-
     # Hint: contextmanager does not work here
-    response = flask.send_file(open(image, mode='rb'), mimetype='image')
+    response = flask.send_file(open(image, mode='rb'), mimetype='image')  # pylint:disable=R1732
     return response
 
 

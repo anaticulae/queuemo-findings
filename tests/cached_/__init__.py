@@ -11,7 +11,7 @@ import pytest
 
 import cached
 
-findings = lambda number: [cached.CachedFinding(msgid='E01010')] * number  # pylint:disable=C0103
+findings = lambda number: [cached.CachedFinding(msgid='E01010')] * number  # pylint:disable=C0103,C3001
 
 # yapf:disable
 FILES = [

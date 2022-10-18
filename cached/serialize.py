@@ -107,7 +107,7 @@ def collect_root(
     collected = []
     if isinstance(document, str):
         document = [document]
-    if isinstance(version, list):
+    if isinstance(version, list):  # pylint:disable=W0160
         version = [version_raw(item) for item in version]
     else:
         version = [version_raw(version)] if version else None

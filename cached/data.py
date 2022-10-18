@@ -8,7 +8,6 @@
 # =============================================================================
 
 import dataclasses
-import typing
 
 
 @dataclasses.dataclass
@@ -17,7 +16,7 @@ class CachedFinding:
     page: int = None
 
 
-CachedFindings = typing.List[CachedFinding]
+CachedFindings = list[CachedFinding]
 
 
 @dataclasses.dataclass
@@ -34,7 +33,7 @@ class CachedResult:
         return self.findings[index]  # pylint:disable=E1136
 
 
-CachedResults = typing.List[CachedResult]
+CachedResults = list[CachedResult]
 
 
 def hashed(findings: CachedFindings) -> str:
