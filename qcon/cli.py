@@ -49,10 +49,10 @@ def main():
     )
     args = utila.parse(parser)
     inputpath, _ = utila.sources(args)  # pylint:disable=W0612,W0632
-
     root = args.get('root', None)
     if not root:
         root = cached.root()
+    utila.log(f'root: {root}')
     overwrite_version = args.get('overwrite_version', None)
     if args.get('publish'):
         returncode = qcon.cmd.publish.run(

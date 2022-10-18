@@ -31,11 +31,16 @@ def test_qcon_collect_home25(cached_example):
 
 
 def test_cli_list(cached_example, mp, capsys):
-    tests.qcon_.run(f'--list --root {cached_example}', mp=mp)
+    """\
+    root: /tmp/dev/tmp/caelum_qcon_master/test_17_36_33/popen-gw8/test_cli_list0/cache
 
+    order009                                 1.24.3    60
+    home025                                  1.24.3    123
+    """
+    tests.qcon_.run(f'--list --root {cached_example}', mp=mp)
     stdout = utilatest.stdout(capsys).strip()
-    assert len(stdout.splitlines()) == 2
-    assert all((len(line.split()) == 3 for line in stdout.splitlines()))
+    assert len(stdout.splitlines()) == 4  # two files plus root: information
+    assert all((len(line.split()) == 3 for line in stdout.splitlines()[2:]))
 
 
 def test_cli_publish_invalid(testdir, mp, capsys):
