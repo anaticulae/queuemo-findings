@@ -2,6 +2,28 @@
 
 Every noteable change is logged here.
 
+## v0.8.0 (2022-10-18)
+
+### Feature
+
+* add qview cli runner (27c626242489)
+* debug root path (2b2fb8e51ef4)
+
+### Chore
+
+* add executable flag (27e7d3ddd728)
+* add dev environment (13850960ba13)
+* add missing deliver flag (038abdac8755)
+* adjust test data generator (b427c5f9c2b3)
+* remove default (15c0a5239411)
+* remove useless longrun (1e0cae2c71c2)
+* remove useless branch and release (b55b97d1fdd4)
+* convert nightly to all (5a8e6057abea)
+* upgrade baw (9a67d9566a12)
+* do not run in privileged mode (5dc72c936dc1)
+* upgrade requirements.txt (0e4f236a44ed)
+* add missing package (058f77f87214)
+
 ## v0.7.0 (2022-10-03)
 
 ### Chore
