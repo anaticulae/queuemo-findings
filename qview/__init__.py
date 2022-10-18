@@ -6,3 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import qcon
+
+__version__ = qcon.__version__
+
+ROOT = qcon.ROOT
+PROCESS = 'qview'
