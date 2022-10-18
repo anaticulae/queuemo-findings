@@ -36,6 +36,7 @@ if __name__ == "__main__":
         url='https://dev.package.checkitweg.de/qcon',
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
+        include_package_data=True,
         classifiers=[
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
