@@ -53,10 +53,11 @@ def pytest_sessionstart():
 def extract(files):
     os.makedirs(CACHED, exist_ok=True)
     # TODO: MOVE TO QUEUEMO?
-    todo = []
-    for source in files:
-        todo.append(functools.partial(runme, source))
-    utila.fork(*todo, worker=4)
+    todo = [functools.partial(runme, source) for source in files]
+    utila.fork(
+        *todo,
+        worker=len(todo),
+    )
 
 
 def runme(source: str):
