@@ -65,6 +65,11 @@ pipeline{
                 //script{baw.all()}
             }
         }
+        stage('docker'){
+            steps{
+                sh './make'
+            }
+        }
         stage('release'){
             steps{
                 script{
