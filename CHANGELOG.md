@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.8.2 (2023-01-09)
+
+### Documentation
+
+* happy New Year! (2dfd86249d4f)
+
+### Chore
+
+* add docker automate step (667c1773f51f)
+* upgrade Jenkinsfile (867fa7333b03)
+* remove useless publish step (79fbfd825d47)
+* upgrade requirements.txt (9b2889735c72)
+* upgrade Jenkinsfile (281b015a6895)
+* use quick install (14d64bcd2cb2)
+* upgrade requirements.txt (c8f7a7381b09)
+* upgrade pipeline (1254af3a0235)
+
 ## v0.8.1 (2022-10-18)
 
 ### Chore
