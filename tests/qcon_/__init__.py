@@ -9,20 +9,20 @@
 
 import functools
 
-import utilatest
+import utilotest
 
 import qcon
 import qcon.cli
 
 run = functools.partial(  # pylint:disable=C0103
-    utilatest.run_command,
+    utilotest.run_command,
     main=qcon.cli.main,
     process=qcon.PROCESS,
     expect=True,
 )
 
 failure = functools.partial(  # pylint:disable=C0103
-    utilatest.run_command,
+    utilotest.run_command,
     main=qcon.cli.main,
     process=qcon.PROCESS,
     expect=False,

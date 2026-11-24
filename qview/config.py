@@ -10,10 +10,10 @@
 import os
 import sys
 
-import configo
-import utila
+import configos
+import utilo
 
-SECRET_KEY = b'helmut_max_power_abs29.nsTODOThisIsVerySecreyISwarTODO'
+SECRET_KEY = b'helmut_max_hoverpower_abs29.nsTODOThisIsVerySecreyISwarTODO'
 API_PREFIX = '/api/v0/'
 
 SYNC = False
@@ -21,10 +21,10 @@ SYNC = False
 
 def renderer_workdir() -> str:
     try:
-        path = configo.env('DEV_QVIEW_RENDERER_TMP')
+        path = configos.env('DEV_QVIEW_RENDERER_TMP')
     except KeyError:
-        utila.error('require global env `DEV_QVIEW_RENDERER_TMP`')
-        sys.exit(utila.FAILURE)
+        utilo.error('require global env `DEV_QVIEW_RENDERER_TMP`')
+        sys.exit(utilo.FAILURE)
     os.makedirs(path, exist_ok=True)
     return path
 

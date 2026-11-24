@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import cached
 
 
 def run(root: str):
-    utila.log()
+    utilo.log()
     files = cached.load_root(root)
     for item in files:
         line = '{:<40} {:<10}{:<10}'.format(  # pylint:disable=C0209
@@ -21,5 +21,5 @@ def run(root: str):
             item.version,
             len(item.findings),
         )
-        utila.log(line)
-    return utila.SUCCESS
+        utilo.log(line)
+    return utilo.SUCCESS

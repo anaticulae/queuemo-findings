@@ -11,9 +11,9 @@ import collections
 import os
 import threading
 
-import painter
 import semver
-import utila
+import upainter
+import utilo
 
 import cached
 import qview.api.findings.utils
@@ -36,14 +36,14 @@ def render(
     versions, counted = data(documents, versions=versions, findings=findings)
     legend = list(findings) if findings else [legend]
     if not counted:
-        utila.error(f'empty: {counted} replace with zero for: {documents}')
-        utila.error(f'versions: {versions} findings: {findings}')
+        utilo.error(f'empty: {counted} replace with zero for: {documents}')
+        utilo.error(f'versions: {versions} findings: {findings}')
         counted = [0] * len(legend)
     versions_raw = [f'v{item}' for item in versions]
     ymax_ = ymax(documents, findings) * 1.1
     diffdoc = qview.api.findings.utils.different_documents(documents)
     usestar = diffdoc > 1 or findings
-    painted = painter.plot_render(
+    painted = upainter.plot_render(
         *(counted if usestar else [counted]),
         labels=versions_raw,
         legends=legend,
@@ -52,7 +52,7 @@ def render(
         title=title,
         grid=True,
     )
-    result = painter.png(painted)
+    result = upainter.png(painted)
     return result
 
 
@@ -63,7 +63,7 @@ def add_todo(paths, documents, versions, findings=None):
         rendered = os.path.join(workdir, path)
         if os.path.exists(os.path.join(workdir, path)):
             continue
-        utila.file_create_binary(rendered)
+        utilo.file_create_binary(rendered)
         # render asynchronously
         todo.append([rendered, document, versions, findings])
     if not todo:
@@ -78,7 +78,7 @@ def add_todo(paths, documents, versions, findings=None):
 def render_todo(todo):
     for path, documents, versions, findings in todo:
         rendered = render(documents, versions=versions, findings=findings)
-        utila.file_replace_binary(path, rendered)
+        utilo.file_replace_binary(path, rendered)
 
 
 def data(
@@ -136,7 +136,7 @@ def ymax(documents, findings) -> int:
     """
     counted = [count_findings(item, findings) for item in documents]
     if findings:
-        counted = utila.flatten(counted)
+        counted = utilo.flatten(counted)
     maxfinding = max(counted, default=5)
     return maxfinding
 

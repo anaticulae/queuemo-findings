@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import painter
+import upainter
 
 import qview.api.findings.renderer
 from tests.cached_ import FILES
@@ -27,4 +27,4 @@ def test_render_documents():
         legend='bachelor90',
         versions=EXPECTED,
     )
-    painter.show_figure(rendered)
+    upainter.show_figure(rendered)

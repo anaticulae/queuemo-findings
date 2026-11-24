@@ -17,7 +17,7 @@ Different Documents             Different Findings          Images      Case
 """
 
 import flask
-import utila
+import utilo
 
 import cached
 import cached.data
@@ -47,9 +47,9 @@ def plots():
 
 
 def select(
-    documents: utila.Strings,
-    versions: utila.Strings,
-    findings: utila.Strings,
+    documents: utilo.Strings,
+    versions: utilo.Strings,
+    findings: utilo.Strings,
 ) -> tuple[list, dict]:
     # TODO: ADD FINDINGS
     root = cached.root()
@@ -77,7 +77,7 @@ def png_path(docname, versions, docs, findings) -> str:
     # if item.config:
     #     path += f'_{item.config}'
     if findings:
-        documents_findings = utila.flatten([item.findings for item in docs])
+        documents_findings = utilo.flatten([item.findings for item in docs])
         selected_findings = [
             item for item in documents_findings if item.msgid in findings
         ]

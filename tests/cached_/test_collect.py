@@ -7,15 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
-import utilatest
+import hoverpower
+import utilotest
 
 import cached
 
 
-@utilatest.requires(power.HOME025_PDF)
+@utilotest.requires(hoverpower.HOME025_PDF)
 def test_collect():
-    source = power.link(power.HOME025_PDF)
+    source = hoverpower.link(hoverpower.HOME025_PDF)
     collected = cached.collect(source)
     assert collected
     assert len(collected) >= 50  # NOT VALIDATED

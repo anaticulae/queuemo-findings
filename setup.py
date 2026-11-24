@@ -8,7 +8,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 PACKAGES = [
     'cached',
@@ -25,7 +25,7 @@ ENTRY_POINTS = dict(console_scripts=[
 ])
 
 if __name__ == "__main__":
-    utila.install(
+    utilo.install(
         __file__,
         include_package_data=True,
     )

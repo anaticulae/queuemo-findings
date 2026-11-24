@@ -10,11 +10,11 @@
 import functools
 import os
 
-import power
+import hoverpower
 import pytest
-import utila
-from utilatest import mp  # pylint:disable=W0611
-from utilatest import td  # pylint:disable=W0611
+import utilo
+from utilotest import mp  # pylint:disable=W0611
+from utilotest import td  # pylint:disable=W0611
 
 import qcon
 import qview.config
@@ -23,23 +23,23 @@ from tests.cached_ import example  # pylint:disable=W0611
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
 PACKAGE = qcon.PROCESS
-power.setup(qcon.ROOT)
+hoverpower.setup(qcon.ROOT)
 
 RESOURCES = [
-    power.HOME025_PDF,
-    power.ORDER009_PDF,
+    hoverpower.HOME025_PDF,
+    hoverpower.ORDER009_PDF,
 ]
 
-CACHED = os.path.join(power.generated(), 'dev_cached_root')
+CACHED = os.path.join(hoverpower.generated(), 'dev_cached_root')
 VERSIONS = ['10.1.0', '10.1.1', '10.1.2', '10.2.0']
 
 qview.config.SYNC = True
 
 
 def cached() -> bool:
-    if not utila.exists(CACHED):
+    if not utilo.exists(CACHED):
         return False
-    return len(utila.file_list(CACHED)) > 0
+    return len(utilo.file_list(CACHED)) > 0
 
 
 require_cached = pytest.mark.skipif(not cached(), reason='require CACHED')
@@ -47,26 +47,26 @@ require_cached = pytest.mark.skipif(not cached(), reason='require CACHED')
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
-    power.run()
+    hoverpower.run()
 
 
 def extract(files):
     os.makedirs(CACHED, exist_ok=True)
     # TODO: MOVE TO QUEUEMO?
     todo = [functools.partial(runme, source) for source in files]
-    utila.fork(
+    utilo.fork(
         *todo,
         worker=len(todo),
     )
 
 
 def runme(source: str):
-    outpath = power.link(source)
+    outpath = hoverpower.link(source)
     cmd = f'queuemo_single -i {source} -o {outpath} --create'
-    utila.run(cmd, verbose=True)
+    utilo.run(cmd, verbose=True)
     cmd = f'qcon -i {outpath} --root {CACHED} --publish'
-    utila.run(cmd, verbose=True)
+    utilo.run(cmd, verbose=True)
     for version in VERSIONS:
         cmd = (f'qcon -i {outpath} --root {CACHED} --publish '
                f'--overwrite_version={version}')
-        utila.run(cmd, verbose=True)
+        utilo.run(cmd, verbose=True)

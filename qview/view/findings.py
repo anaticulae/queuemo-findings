@@ -10,7 +10,7 @@
 import os
 
 import flask
-import utila
+import utilo
 
 import cached
 import qview.config
@@ -36,7 +36,7 @@ def show_findings():
 def view_plot(image: str = None):
     workdir = qview.config.renderer_workdir()
     image = os.path.join(workdir, image)
-    if not os.path.exists(image) or not utila.file_read_binary(image):
+    if not os.path.exists(image) or not utilo.file_read_binary(image):
         return 'image does not exists', 404
     # Hint: contextmanager does not work here
     response = flask.send_file(open(image, mode='rb'), mimetype='image')  # pylint:disable=R1732

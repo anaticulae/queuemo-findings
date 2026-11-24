@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import cached
 import tests.qcon_
@@ -38,34 +38,34 @@ def test_cli_list(cached_example, mp, capsys):
     home025                                  1.24.3    123
     """
     tests.qcon_.run(f'--list --root {cached_example}', mp=mp)
-    stdout = utilatest.stdout(capsys).strip()
+    stdout = utilotest.stdout(capsys).strip()
     assert len(stdout.splitlines()) == 4  # two files plus root: information
     assert all((len(line.split()) == 3 for line in stdout.splitlines()[2:]))
 
 
 def test_cli_publish_invalid(testdir, mp, capsys):
     tests.qcon_.failure('--publish', mp=mp)
-    stderr = utilatest.stderr(capsys).strip()
+    stderr = utilotest.stderr(capsys).strip()
     assert 'could not dump any data' in stderr
 
 
-@utilatest.requires(power.HOME025_PDF)
+@utilotest.requires(hoverpower.HOME025_PDF)
 def test_cli_publish_single(testdir, mp, capsys):
-    source = power.link(power.HOME025_PDF)
+    source = hoverpower.link(hoverpower.HOME025_PDF)
     tests.qcon_.run(
         f'-i {source} --publish --root {testdir.tmpdir}',
         mp=mp,
     )
-    assert len(utila.file_list(testdir.tmpdir)) == 1
-    stdout = utilatest.stdout(capsys)
+    assert len(utilo.file_list(testdir.tmpdir)) == 1
+    stdout = utilotest.stdout(capsys)
     assert 'collect:' in stdout
     assert 'dump:' in stdout
 
 
-@utilatest.requires(power.HOME025_PDF)
+@utilotest.requires(hoverpower.HOME025_PDF)
 def test_cli_publish_overwriteversion(testdir, mp):
     version = '13.13.13'
-    source = power.link(power.HOME025_PDF)
+    source = hoverpower.link(hoverpower.HOME025_PDF)
     cmd = (f'-i {source} --publish '
            f'--root {testdir.tmpdir} --overwrite_version {version}')
     tests.qcon_.run(cmd, mp=mp)

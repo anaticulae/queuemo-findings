@@ -10,15 +10,15 @@
 import os
 import sys
 
-import configo
-import utila
+import configos
+import utilo
 
 
 def root() -> str:
     try:
-        path = configo.env('DEV_CACHED_ROOT')
+        path = configos.env('DEV_CACHED_ROOT')
     except KeyError:
-        utila.error('require global env `DEV_CACHED_ROOT`')
-        sys.exit(utila.FAILURE)
+        utilo.error('require global env `DEV_CACHED_ROOT`')
+        sys.exit(utilo.FAILURE)
     os.makedirs(path, exist_ok=True)
     return path

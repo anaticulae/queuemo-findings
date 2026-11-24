@@ -9,9 +9,9 @@
 
 import os
 
-import power
+import hoverpower
 import pytest
-import utilatest
+import utilotest
 
 import cached
 import tests.qcon_
@@ -19,14 +19,14 @@ import tests.qcon_
 
 @pytest.fixture
 def cached_example(testdir, mp):
-    utilatest.fixture_requires(power.HOME025_PDF)
-    utilatest.fixture_requires(power.ORDER009_PDF)
+    utilotest.fixture_requires(hoverpower.HOME025_PDF)
+    utilotest.fixture_requires(hoverpower.ORDER009_PDF)
 
     cache = os.path.join(testdir.tmpdir, 'cache')
     os.makedirs(cache)
 
-    home25 = power.link(power.HOME025_PDF)
-    order09 = power.link(power.ORDER009_PDF)
+    home25 = hoverpower.link(hoverpower.HOME025_PDF)
+    order09 = hoverpower.link(hoverpower.ORDER009_PDF)
     cmd = f'-i {home25} -i {order09} --publish --root {cache}'
     tests.qcon_.run(cmd, mp=mp)
 

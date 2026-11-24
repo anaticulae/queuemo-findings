@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import utila
+import utilo
 
 import cached
 import qcon
@@ -15,31 +15,31 @@ import qcon.cmd.list
 import qcon.cmd.publish
 
 CMD = [
-    utila.Command(
+    utilo.Command(
         longcut='publish',
         message='collect results and merge to database',
     ),
-    utila.Command(
+    utilo.Command(
         longcut='list',
         message='list results in data base',
     ),
-    utila.Parameter(
+    utilo.Parameter(
         longcut='root',
         message=f'cache directory to write dumps(default:{cached.root()})',
     ),
-    utila.Parameter(
+    utilo.Parameter(
         longcut='overwrite_version',
         message='overwrite or define queuemo version of collected file',
     ),
 ]
 
 
-@utila.saveme
+@utilo.saveme
 def main():
-    parser = utila.create_parser(
+    parser = utilo.create_parser(
         todo=CMD,
         version=qcon.__version__,
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             outputparameter=False,
             inputparameter=True,
             cacheflag=False,
@@ -47,12 +47,12 @@ def main():
             waitingflag=False,
         ),
     )
-    args = utila.parse(parser)
-    inputpath, _ = utila.sources(args)  # pylint:disable=W0612,W0632
+    args = utilo.parse(parser)
+    inputpath, _ = utilo.sources(args)  # pylint:disable=W0612,W0632
     root = args.get('root', None)
     if not root:
         root = cached.root()
-    utila.log(f'root: {root}')
+    utilo.log(f'root: {root}')
     overwrite_version = args.get('overwrite_version', None)
     if args.get('publish'):
         returncode = qcon.cmd.publish.run(
@@ -66,4 +66,4 @@ def main():
         returncode = qcon.cmd.list.run(root)
         if returncode:
             return returncode
-    return utila.SUCCESS
+    return utilo.SUCCESS

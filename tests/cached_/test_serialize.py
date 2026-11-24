@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
-import utilatest
+import hoverpower
+import utilotest
 
 import cached
 
@@ -53,9 +53,9 @@ def test_dump_load_result(testdir):
     assert loaded == data
 
 
-@utilatest.requires(power.HOME025_PDF)
+@utilotest.requires(hoverpower.HOME025_PDF)
 def test_collect_and_dump(testdir):
-    source = power.link(power.HOME025_PDF)
+    source = hoverpower.link(hoverpower.HOME025_PDF)
     document = cached.collect(source)
     cached.dump_root(document, testdir.tmpdir)
     loaded = cached.load_result(

@@ -134,7 +134,7 @@ Every noteable change is logged here.
 * add legend to plot renderer (d98db01a1fbf)
 * skip and log pickling error (de13d7967005)
 * increase distance between max value and top border (e2b788db2518)
-* link renderer to user call, run in parallel (1183383541cc)
+* qvlink renderer to user call, run in parallel (1183383541cc)
 * add renderer tmp path (08e32a30d5b8)
 * add finding version plot renderer (6f92f9be0f89)
 * add method to collect and sort available versions (48dd9a169a52)

@@ -11,7 +11,7 @@ import os
 import pickle  # nosec
 
 import semver
-import utila
+import utilo
 
 import cached
 
@@ -35,7 +35,7 @@ def dump_result(
     overwrite: bool = True,
 ) -> str:
     if document.version is None:
-        utila.error(f'could not dump {document.document}, '
+        utilo.error(f'could not dump {document.document}, '
                     'require --overwrite_version parameter')
         return None
 
@@ -43,11 +43,11 @@ def dump_result(
     parent = os.path.join(root, document.document)
     path = os.path.join(parent, named)
     os.makedirs(parent, exist_ok=True)  # create parent
-    utila.debug(f'write: {path}')
+    utilo.debug(f'write: {path}')
     dumped = cached.dumps(document)
-    writer = utila.file_create_binary
+    writer = utilo.file_create_binary
     if overwrite:
-        writer = utila.file_replace_binary
+        writer = utilo.file_replace_binary
     writer(path, dumped)
     return path
 
@@ -61,10 +61,10 @@ def load_result(
     named = name(version=version, config=config)
     path = os.path.join(root, document, named)
     assert os.path.exists(path), str(path)
-    loaded = utila.file_read_binary(path)
+    loaded = utilo.file_read_binary(path)
     document = loads(loaded)
     if document is None:
-        utila.error(f'could not load document: {document} {version} {config}')
+        utilo.error(f'could not load document: {document} {version} {config}')
     return document
 
 
@@ -89,10 +89,10 @@ def load_root(
     result = []
     for item in collect_root(root, document, version, config):
         path = os.path.join(root, item)
-        raw = utila.file_read_binary(path)
+        raw = utilo.file_read_binary(path)
         loaded = loads(raw)
         if loaded is None:
-            utila.error(f'could not load document: {path}')
+            utilo.error(f'could not load document: {path}')
             continue
         result.append(loaded)
     return result
@@ -113,7 +113,7 @@ def collect_root(
         version = [version_raw(version)] if version else None
     if isinstance(config, str):
         config = [config]
-    for item in utila.file_list(root):
+    for item in utilo.file_list(root):
         raw = str(item)
         if skip(document, raw):
             continue

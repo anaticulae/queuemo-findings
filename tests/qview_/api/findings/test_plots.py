@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import painter
-import utila
+import upainter
+import utilo
 
 import qview.view.findings
 import tests.conftest
@@ -26,7 +26,7 @@ def test_plots_get_root(client, testdir, mp):
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, 'findings/plots')
     assert len(content['plots']) == 2
-    assert len(utila.file_list('renderer')) == 2
+    assert len(utilo.file_list('renderer')) == 2
 
 
 @tests.conftest.require_cached
@@ -38,7 +38,7 @@ def test_plots_get_home025(client, testdir, mp):
             'findings/plots?documents%5B%5D=home025',
         )
     assert len(content['plots']) == 1
-    assert len(utila.file_list('renderer')) == 1
+    assert len(utilo.file_list('renderer')) == 1
 
 
 @tests.conftest.require_cached
@@ -47,9 +47,9 @@ def test_plots_get_home025_error1220_error1221(client, testdir, mp):
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, cmd)
     assert len(content['plots']) == 1
-    rendered = utila.file_list('renderer', absolute=True)
+    rendered = utilo.file_list('renderer', absolute=True)
     assert len(rendered) == 1
-    painter.show_figure(rendered[0])
+    upainter.show_figure(rendered[0])
 
 
 @tests.conftest.require_cached
@@ -58,9 +58,9 @@ def test_plots_selective_findings(client, testdir, mp):
     with tests.qview_.patch_todo(mp, testdir, tests.conftest.CACHED):
         content = tests.qview_.apicall(client, cmd)
     assert len(content['plots']) == 1
-    rendered = utila.file_list('renderer', absolute=True)
+    rendered = utilo.file_list('renderer', absolute=True)
     assert len(rendered) == 1
-    painter.show_figure(rendered[0])
+    upainter.show_figure(rendered[0])
 
 
 @tests.conftest.require_cached
