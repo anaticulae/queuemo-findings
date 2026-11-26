@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-11-26)
+
+### Chores
+
+- **make**: Do not release twice
+  ([`2fa0c30`](https://github.com/anaticulae/queuemo-findings/commit/2fa0c3011fd1989adca802216dbc449dd0206c17))
+
+- **make**: Run in two steps to handle required step correctly
+  ([`f495e5a`](https://github.com/anaticulae/queuemo-findings/commit/f495e5a781a3faf02a5037fc588baec023015d3b))
+
+
 ## v1.0.0 (2026-11-26)
 
 ### Bug Fixes
