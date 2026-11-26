@@ -82,6 +82,9 @@ allowed_tags = [
 ]
 default_bump_level = 2
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = [
     ".",
@@ -94,6 +97,12 @@ include = [
     "qview.api",
     "qview.api.findings",
     "qview.view",
+    "qview.static",
+    "qview.static.css",
+    "qview.static.js",
+    "qview.templates",
+    "qview.templates.findings",
+    "qview.templates.public",
 ]
 exclude = [
     "tests*",
