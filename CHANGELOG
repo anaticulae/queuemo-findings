@@ -1,189 +1,657 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-11-26)
+
+### Bug Fixes
+
+- **config**: Ensure default cached path
+  ([`c8d6127`](https://github.com/anaticulae/queuemo-findings/commit/c8d6127d8766b44dc29d9345b74d51a715275890))
+
+### Chores
+
+- **conftest**: Add missing env var
+  ([`c67550a`](https://github.com/anaticulae/queuemo-findings/commit/c67550a918b386a8da8a6bd9224a25f60949b6f2))
+
+- **files**: Adjust file names
+  ([`29015ef`](https://github.com/anaticulae/queuemo-findings/commit/29015ef6ef082e4b201902f7759eeabe7fd92159))
+
+- **github**: Add .github
+  ([`3cafccb`](https://github.com/anaticulae/queuemo-findings/commit/3cafccb393001219d80a6cc7437cdc8990a0e7bd))
+
+- **pyproject**: Add missing license
+  ([`101b670`](https://github.com/anaticulae/queuemo-findings/commit/101b67052311677e8c960a6d0e9222f689b9234f))
+
+- **pyproject**: Add modern project structure
+  ([`2c2802b`](https://github.com/anaticulae/queuemo-findings/commit/2c2802b8fabc72be072050f285d1f994ac25eed3))
+
+- **pyproject**: Rename project to publish on pip
+  ([`1ae069c`](https://github.com/anaticulae/queuemo-findings/commit/1ae069cc8ba2ae525d9d78e1ad356080f5a9fade))
+
+- **rename**: Adjust names
+  ([`1615b90`](https://github.com/anaticulae/queuemo-findings/commit/1615b90fcb339889864300936ded71f0fd8843b3))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`5e577c9`](https://github.com/anaticulae/queuemo-findings/commit/5e577c9ae8d037da12cef7959b36e1614c7c0b1e))
+
+### Testing
+
+- **conftest**: Replace with configos code
+  ([`3339317`](https://github.com/anaticulae/queuemo-findings/commit/33393171d2d98ea94b5ea4f05588aa1a9be94df7))
+
 
 ## v0.8.2 (2023-01-09)
 
+### Chores
+
+- **Jenkins**: Add docker automate step
+  ([`667c177`](https://github.com/anaticulae/queuemo-findings/commit/667c1773f51f1ee48c4a6e261edc0b133a4dd156))
+
+- **Jenkins**: Remove useless publish step
+  ([`79fbfd8`](https://github.com/anaticulae/queuemo-findings/commit/79fbfd825d47ce82f51c1fc641e447daa3e02026))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`867fa73`](https://github.com/anaticulae/queuemo-findings/commit/867fa7333b03e91e5cf96dda5e76e518c0f57e7d))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`281b015`](https://github.com/anaticulae/queuemo-findings/commit/281b015a68958ec8a690e5f93149e24439f94c6e))
+
+- **Jenkins**: Upgrade pipeline
+  ([`1254af3`](https://github.com/anaticulae/queuemo-findings/commit/1254af3a02359e52398ef361cead21a345f0f325))
+
+- **requirements**: Upgrade requirements.txt
+  ([`9b28897`](https://github.com/anaticulae/queuemo-findings/commit/9b2889735c72770d9cd4ffdfa8ac9c44669f6773))
+
+- **requirements**: Upgrade requirements.txt
+  ([`c8f7a73`](https://github.com/anaticulae/queuemo-findings/commit/c8f7a7381b09023db40ba7f55466b8494ddf99ce))
+
+- **setup**: Use quick install
+  ([`14d64bc`](https://github.com/anaticulae/queuemo-findings/commit/14d64bcd2cb26b71bdf8cb2dbcead104733625d2))
+
 ### Documentation
 
-* happy New Year! (2dfd86249d4f)
+- **copyright**: Happy New Year!
+  ([`2dfd862`](https://github.com/anaticulae/queuemo-findings/commit/2dfd86249d4f46de55983622bafe114f41e29662))
 
-### Chore
-
-* add docker automate step (667c1773f51f)
-* upgrade Jenkinsfile (867fa7333b03)
-* remove useless publish step (79fbfd825d47)
-* upgrade requirements.txt (9b2889735c72)
-* upgrade Jenkinsfile (281b015a6895)
-* use quick install (14d64bcd2cb2)
-* upgrade requirements.txt (c8f7a7381b09)
-* upgrade pipeline (1254af3a0235)
 
 ## v0.8.1 (2022-10-18)
 
-### Chore
+### Chores
 
-* add Volume to share data (bc45b5271495)
+- **Dev**: Add Volume to share data
+  ([`bc45b52`](https://github.com/anaticulae/queuemo-findings/commit/bc45b527149517f24a9c888b5310f2251a0ba0d9))
+
 
 ## v0.8.0 (2022-10-18)
 
-### Feature
+### Chores
 
-* add qview cli runner (27c626242489)
-* debug root path (2b2fb8e51ef4)
+- **baw**: Remove default
+  ([`15c0a52`](https://github.com/anaticulae/queuemo-findings/commit/15c0a5239411801da4e746264017983afd52e4ff))
 
-### Chore
+- **build**: Add executable flag
+  ([`27e7d3d`](https://github.com/anaticulae/queuemo-findings/commit/27e7d3ddd728eaa07d8e8618e0c8d08050887e47))
 
-* add executable flag (27e7d3ddd728)
-* add dev environment (13850960ba13)
-* add missing deliver flag (038abdac8755)
-* adjust test data generator (b427c5f9c2b3)
-* remove default (15c0a5239411)
-* remove useless longrun (1e0cae2c71c2)
-* remove useless branch and release (b55b97d1fdd4)
-* convert nightly to all (5a8e6057abea)
-* upgrade baw (9a67d9566a12)
-* do not run in privileged mode (5dc72c936dc1)
-* upgrade requirements.txt (0e4f236a44ed)
-* add missing package (058f77f87214)
+- **env**: Add dev environment
+  ([`1385096`](https://github.com/anaticulae/queuemo-findings/commit/13850960ba13a022c7991ecf245fcc67fdb1eaa7))
+
+- **Jenkins**: Convert nightly to all
+  ([`5a8e605`](https://github.com/anaticulae/queuemo-findings/commit/5a8e6057abea0e9d0a6916a4783538b0422e1678))
+
+- **Jenkins**: Do not run in privileged mode
+  ([`5dc72c9`](https://github.com/anaticulae/queuemo-findings/commit/5dc72c936dc19ff0e1caf7c6a9ca27394b6627ad))
+
+- **Jenkins**: Remove useless branch and release
+  ([`b55b97d`](https://github.com/anaticulae/queuemo-findings/commit/b55b97d1fdd40bd8768e0a4e401fa8313cc7036b))
+
+- **Jenkins**: Remove useless longrun
+  ([`1e0cae2`](https://github.com/anaticulae/queuemo-findings/commit/1e0cae2c71c258dcc57b8b82f340ea1b75f56811))
+
+- **Jenkins**: Upgrade baw
+  ([`9a67d95`](https://github.com/anaticulae/queuemo-findings/commit/9a67d9566a123f4b4512222c80521b0be6db03ab))
+
+- **requirements**: Upgrade requirements.txt
+  ([`0e4f236`](https://github.com/anaticulae/queuemo-findings/commit/0e4f236a44ed2bcdefd1c61d473dd22f787280d7))
+
+- **resources**: Adjust test data generator
+  ([`b427c5f`](https://github.com/anaticulae/queuemo-findings/commit/b427c5f9c2b36ac13c5d7e7ae3edff648dfa7be7))
+
+- **setup**: Add missing deliver flag
+  ([`038abda`](https://github.com/anaticulae/queuemo-findings/commit/038abdac87556d68bc677bc0c3c01f1a2f267e2d))
+
+- **setup**: Add missing package
+  ([`058f77f`](https://github.com/anaticulae/queuemo-findings/commit/058f77f872143631645397d4f043cdf7031a622c))
+
+### Code Style
+
+- **baw**: Add missing header
+  ([`2e5846a`](https://github.com/anaticulae/queuemo-findings/commit/2e5846a424c16cb5125d1efe7e990f79e472d82c))
+
+### Features
+
+- **cli**: Add qview cli runner
+  ([`27c6262`](https://github.com/anaticulae/queuemo-findings/commit/27c626242489188ff7af48c5da27cad8773a8ca9))
+
+- **qcon**: Debug root path
+  ([`2b2fb8e`](https://github.com/anaticulae/queuemo-findings/commit/2b2fb8e51ef4d758ca804d9f09d8d64c32769a99))
+
+### Refactoring
+
+- **linter**: Solve linter warnings
+  ([`eb327a2`](https://github.com/anaticulae/queuemo-findings/commit/eb327a2b44e81127be5d8ee4e247ec489f8c0f59))
+
 
 ## v0.7.0 (2022-10-03)
 
-### Chore
+### Chores
 
-* add separate generator step (be34c2b628e4)
-* add Jenkinsfile (c614d01dfef0)
-* upgrade requirements.txt (726096c21179)
+- **ci**: Add Jenkinsfile
+  ([`c614d01`](https://github.com/anaticulae/queuemo-findings/commit/c614d01dfef079b4c40eec07a30ab3597ec5ee12))
 
-## v0.6.3
+- **Jenkinsfile**: Add separate generator step
+  ([`be34c2b`](https://github.com/anaticulae/queuemo-findings/commit/be34c2b628e41e724a462de31f2c38ee3b272b29))
 
-### Documentation
+- **requirements**: Upgrade requirements.txt
+  ([`726096c`](https://github.com/anaticulae/queuemo-findings/commit/726096c211790360b249071dcdca6866d8038ba8))
 
-* adjust modules path (fb7ece502df5)
-* Happy New Year! (c487cfd6530c)
+### Code Style
 
-## v0.6.2
+- **changelog**: Adjust for automation tool
+  ([`388a18c`](https://github.com/anaticulae/queuemo-findings/commit/388a18c2451aee23a4fc025e328c900a07bb1be0))
 
-### Fix
+### Refactoring
 
-* adjust job file name (ff30a787a556)
+- **data**: Move finding hasher
+  ([`aa2e879`](https://github.com/anaticulae/queuemo-findings/commit/aa2e8790173b16d15bcc5f875213a669f615067f))
 
-## v0.6.1
+- **plots**: Simplify code
+  ([`d3e97dd`](https://github.com/anaticulae/queuemo-findings/commit/d3e97dda467d87f3c51267ae24c69cdf99b764fa))
 
-### Fix
+- **plots**: Simplify code
+  ([`2b59a85`](https://github.com/anaticulae/queuemo-findings/commit/2b59a85178cc8cfc8a988bab8e866eb5b34db124))
 
-* do not fail on empty user selection (d3da04d00c7c)
+### Testing
 
-## v0.6.0
+- **refactor**: Use fixture shortcuts
+  ([`fe4671c`](https://github.com/anaticulae/queuemo-findings/commit/fe4671cfdb902783de799402efffbdde5b2643d2))
 
-### Feature
+- **skip**: Tests if data is not generated
+  ([`1fb912e`](https://github.com/anaticulae/queuemo-findings/commit/1fb912e6817e7c2268b8523bfb63bcdf0db8a0e6))
 
-* increase width of rendered plot (363f8f19345f)
-* set zero as non existing value (a6f324581802)
-* add options to collect findings by folder (4a25c8f501b5)
 
-### Fix
+## v0.6.3 (2022-05-16)
 
-* always fill empty data (9eabe067c00b)
-* return 404 to avoid client browser caching (eee0c8cf5d45)
-* do not break rendering with empty data (e511ebc69f57)
-* beautify document name (1caa0def7f20)
+### Chores
 
-## v0.5.1
+- **config**: Move project config
+  ([`6bcfdc2`](https://github.com/anaticulae/queuemo-findings/commit/6bcfdc2c2699beaa02d5bbc1206aec41a6e89cd4))
 
-### Feature
+- **requirements**: Make requirements less strict
+  ([`c08910a`](https://github.com/anaticulae/queuemo-findings/commit/c08910a2831782c3e844335ba1bb4f4cf8500fd6))
 
-* add grid to increase readability (4d39d7489f9f)
+- **requirements**: Upgrade requirements.txt
+  ([`c5b7721`](https://github.com/anaticulae/queuemo-findings/commit/c5b7721af2f42ae2ba40e8b1ab1b89657f67e9d8))
 
-### Fix
+- **resources**: Sort resources alphabetically
+  ([`da831fd`](https://github.com/anaticulae/queuemo-findings/commit/da831fddabb877f890a771d3676ae3cf948fef30))
 
-* beautify document name (df2ccca31a93)
-* overwrite result if already exists (7bde3720998f)
-* use default value for non existing data point (77c329568e23)
-* limit max finding count to selected findings (c33df0575e16)
+### Code Style
 
-## v0.5.0
-
-### Feature
-
-* use selective findings as additional render input (80004e023f63)
-* add plot updater (3896df496fc0)
-* add parameter to overwrite collected version (4bfe5a475801)
-* add method to group data by finding id (194036098611)
-* add sync flag to use synchronized renderer (246a4b7c8bdd)
-* add conftest basic app (348868a93513)
-
-### Fix
-
-* enable plotting different findings (203bdcc29767)
-* do not fail on plain plots call (8b16ad9c9ffb)
+- **changelog**: Adjust newline
+  ([`6e8ba29`](https://github.com/anaticulae/queuemo-findings/commit/6e8ba29215c40577b9b61075826a094860123dec))
 
 ### Documentation
 
-* add different plot states (38259b708d53)
-* extend interface documentation (20bd712d4d94)
+- **copyright**: Happy New Year!
+  ([`c487cfd`](https://github.com/anaticulae/queuemo-findings/commit/c487cfd6530c27c818ab540da09648dbbed296c5))
 
-## v0.4.0
+- **fix**: Adjust modules path
+  ([`fb7ece5`](https://github.com/anaticulae/queuemo-findings/commit/fb7ece502df50214f661dae426ac7acd57dee21a))
 
-### Feature
+### Testing
 
-* add distance to text and div border (681dd839d93e)
-* limit plot size height (1c38b078d18e)
-* use selected versions (84a76c7d10e7)
-* add plot provider (200e6b5b2e63)
-* add legend to plot renderer (d98db01a1fbf)
-* skip and log pickling error (de13d7967005)
-* increase distance between max value and top border (e2b788db2518)
-* qvlink renderer to user call, run in parallel (1183383541cc)
-* add renderer tmp path (08e32a30d5b8)
-* add finding version plot renderer (6f92f9be0f89)
-* add method to collect and sort available versions (48dd9a169a52)
-* register data API (01a4c582c75e)
-* add selected plot provider (79945e7d6a27)
-* add multiple filter options (582721912f08)
-* render incoming plots (30a48735b07d)
-* define plots update API (4320c2630152)
-* make findings selectable (3fe6c5bff496)
-* collect used finding ids (fa2146cedca0)
-* add rpc call (08722d6d461a)
-* render list of documents and used versions (89fd5633c0e0)
-* add findings and home view (5c1c6c987a31)
-* add basic application structure (7be56fbc144e)
+- **adjust**: Adjust resource names
+  ([`5f5a5d1`](https://github.com/anaticulae/queuemo-findings/commit/5f5a5d1fa37415aee58db050ed9885d60e6e605c))
 
-## v0.3.0
+- **adjust**: Adjust unit test
+  ([`8716f2b`](https://github.com/anaticulae/queuemo-findings/commit/8716f2baadf2d9200da72dd9d6eeb8f2af652a2b))
 
-### Feature
 
-* add list command (1429011e5fd0)
+## v0.6.2 (2021-06-11)
 
-### Fix
+### Bug Fixes
 
-* rename collect command to publish (6866ab348664)
-* use filename instead of tmp name (297a72f4be3c)
+- **link**: Adjust job file name
+  ([`ff30a78`](https://github.com/anaticulae/queuemo-findings/commit/ff30a787a55649439037b9ff6712007684695f28))
 
-## v0.2.0
+### Chores
 
-### Feature
+- **requirements**: Add missing link package
+  ([`ceea66e`](https://github.com/anaticulae/queuemo-findings/commit/ceea66ea91462fb983403f74baa92a0569a8a907))
 
-* connect collect command to data logic (0e69cbaeccf5)
-* add config to manage cached global vars (7476d9025425)
-* enable dumping single document (22f902547dcd)
-* add method to collect cached data from queuemo result (38ca57b9a5b7)
+- **requirements**: Upgrade requirements.txt
+  ([`6c74ec2`](https://github.com/anaticulae/queuemo-findings/commit/6c74ec2f0fcfc467464df853af93248969330b47))
 
-### Fix
+### Refactoring
 
-* use absolute serialize path (444cfc099128)
+- **collect**: Simplify code
+  ([`abc40ed`](https://github.com/anaticulae/queuemo-findings/commit/abc40edaf478105c4c68b3a5ef3b4b8fc7282c10))
 
-## v0.1.0
 
-### Feature
+## v0.6.1 (2021-06-05)
 
-* add method to dump and load single result (8b36670c401d)
-* add mechanism to dump and load analyzed projects (a16da8b1acb1)
-* add basic document structure (d48a2a3749e2)
+### Bug Fixes
+
+- **plots**: Do not fail on empty user selection
+  ([`d3da04d`](https://github.com/anaticulae/queuemo-findings/commit/d3da04d00c7ccbce156ff7482d803df69b37cbf8))
+
+### Chores
+
+- **requirements**: Make requirements less strict
+  ([`9014d3a`](https://github.com/anaticulae/queuemo-findings/commit/9014d3ae558b3032343adc3b38472aa5cc7b3727))
+
+- **requirements**: Upgrade requirements.txt
+  ([`7ce7988`](https://github.com/anaticulae/queuemo-findings/commit/7ce79882d9b8bc4406d423b6ae6f4710f8a31530))
+
+### Code Style
+
+- **format**: Use improved yapf formatter
+  ([`10a337e`](https://github.com/anaticulae/queuemo-findings/commit/10a337eb1e0b2dd5d8849b0a97901ee92a1f7724))
+
+### Testing
+
+- **fix**: Adjust to new power API
+  ([`8043f05`](https://github.com/anaticulae/queuemo-findings/commit/8043f0586d45e39c25460eea3b4b78c31a5bf844))
+
+
+## v0.6.0 (2021-02-24)
+
+### Bug Fixes
+
+- **collect**: Beautify document name
+  ([`1caa0de`](https://github.com/anaticulae/queuemo-findings/commit/1caa0def7f20925d70f00e3356baca2bdde26e15))
+
+- **renderer**: Always fill empty data
+  ([`9eabe06`](https://github.com/anaticulae/queuemo-findings/commit/9eabe067c00beda48f415a1ae876c6bee1858b7d))
+
+- **renderer**: Do not break rendering with empty data
+  ([`e511ebc`](https://github.com/anaticulae/queuemo-findings/commit/e511ebc69f57fad1e8723c5d9d5f11879ed34255))
+
+- **view**: Return 404 to avoid client browser caching
+  ([`eee0c8c`](https://github.com/anaticulae/queuemo-findings/commit/eee0c8cf5d45695ac8a9e8f4086ffe6d84842f7a))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ec4244f`](https://github.com/anaticulae/queuemo-findings/commit/ec4244f0daa941014824959a8fd285fa7deedaee))
+
+### Code Style
+
+- **copyright**: Add missing copyright header
+  ([`4d93f79`](https://github.com/anaticulae/queuemo-findings/commit/4d93f795e8eb4650e20e9f498e1731ec85c6ad2b))
+
+### Features
+
+- **findings**: Add options to collect findings by folder
+  ([`4a25c8f`](https://github.com/anaticulae/queuemo-findings/commit/4a25c8f501b560cde6a497a3a7fadd505ba3b359))
+
+- **renderer**: Increase width of rendered plot
+  ([`363f8f1`](https://github.com/anaticulae/queuemo-findings/commit/363f8f19345f74ce04da4b16f4c126bd7d07d33d))
+
+- **renderer**: Set zero as non existing value
+  ([`a6f3245`](https://github.com/anaticulae/queuemo-findings/commit/a6f324581802f7cc5978d61da518ad785512ba4c))
+
+### Refactoring
+
+- **test**: Externalize generated versions
+  ([`bb54799`](https://github.com/anaticulae/queuemo-findings/commit/bb54799a06085f674620b57d4591e95d3bc52e2c))
+
+### Testing
+
+- **findings**: Verify complete selected API call
+  ([`99ea546`](https://github.com/anaticulae/queuemo-findings/commit/99ea54677d0fc610ff726156e3d9ceff705f3b83))
+
+- **qview**: Enable bytes as return values for api call
+  ([`df37c54`](https://github.com/anaticulae/queuemo-findings/commit/df37c5447d6834b35af982ac7dcca13f05f10172))
+
+
+## v0.5.1 (2021-02-12)
+
+### Bug Fixes
+
+- **cli**: Overwrite result if already exists
+  ([`7bde372`](https://github.com/anaticulae/queuemo-findings/commit/7bde3720998f6f5e2a95b489209a7d0471cb209b))
+
+- **collect**: Beautify document name
+  ([`df2ccca`](https://github.com/anaticulae/queuemo-findings/commit/df2ccca31a93b4beb9d34f23c421298ee8832c95))
+
+- **plot**: Limit max finding count to selected findings
+  ([`c33df05`](https://github.com/anaticulae/queuemo-findings/commit/c33df0575e16b32f2346f24f44a854521a6d8976))
+
+- **plot**: Use default value for non existing data point
+  ([`77c3295`](https://github.com/anaticulae/queuemo-findings/commit/77c329568e23e947fb81dd7030dbd0ade1a78384))
+
+### Features
+
+- **plot**: Add grid to increase readability
+  ([`4d39d74`](https://github.com/anaticulae/queuemo-findings/commit/4d39d7489f9fc7746c040a7959328240d739444a))
+
+### Testing
+
+- **fix**: Indent code to use patching context manager
+  ([`c572eca`](https://github.com/anaticulae/queuemo-findings/commit/c572ecaefe1ab0b32b66c5c0a1c324cb42955471))
+
+
+## v0.5.0 (2021-02-11)
+
+### Bug Fixes
+
+- **API**: Do not fail on plain plots call
+  ([`8b16ad9`](https://github.com/anaticulae/queuemo-findings/commit/8b16ad9c9ffb629ab1e741cf7cd3a16952323c5e))
+
+- **plots**: Enable plotting different findings
+  ([`203bdcc`](https://github.com/anaticulae/queuemo-findings/commit/203bdcc29767d1ef061022f20a5aab303cae40bf))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`cdd3ee1`](https://github.com/anaticulae/queuemo-findings/commit/cdd3ee1802690e3456463f5a1920b34f06cf0078))
+
+- **resources**: Generate cached resource items
+  ([`8f34239`](https://github.com/anaticulae/queuemo-findings/commit/8f3423926095f7eb1a45363e48b62b0fec0203bc))
+
+- **resources**: Generate more document versions
+  ([`051b4e9`](https://github.com/anaticulae/queuemo-findings/commit/051b4e992a830ae559105d43c0922469dda3ef38))
 
 ### Documentation
 
-* add basic documentation (c8dcd54fcc72)
+- **API**: Extend interface documentation
+  ([`20bd712`](https://github.com/anaticulae/queuemo-findings/commit/20bd712d4d94ea1fa73e9aecbe54bda59995cd7d))
 
-## v0.0.0 Initial release
+- **plots**: Add different plot states
+  ([`38259b7`](https://github.com/anaticulae/queuemo-findings/commit/38259b708d53ad3a165fd2efade80d6b287aa843))
+
+### Features
+
+- **config**: Add sync flag to use synchronized renderer
+  ([`246a4b7`](https://github.com/anaticulae/queuemo-findings/commit/246a4b7c8bddc08a212885795e72ddf17d91a44b))
+
+- **plot**: Use selective findings as additional render input
+  ([`80004e0`](https://github.com/anaticulae/queuemo-findings/commit/80004e023f634774594ef55312e5b4e9d4b35c16))
+
+- **plots**: Add method to group data by finding id
+  ([`1940360`](https://github.com/anaticulae/queuemo-findings/commit/194036098611515526439d4f3775db65230990fa))
+
+- **publish**: Add parameter to overwrite collected version
+  ([`4bfe5a4`](https://github.com/anaticulae/queuemo-findings/commit/4bfe5a4758018dc2e475253c77672ea2b7af18ac))
+
+- **test**: Add conftest basic app
+  ([`348868a`](https://github.com/anaticulae/queuemo-findings/commit/348868a935132da8785b09e46d49196baf25eb27))
+
+- **view**: Add plot updater
+  ([`3896df4`](https://github.com/anaticulae/queuemo-findings/commit/3896df496fc0329e8cbee2dc7bbde4251cf32794))
+
+### Refactoring
+
+- **API**: Simplify API
+  ([`37e5f95`](https://github.com/anaticulae/queuemo-findings/commit/37e5f95563223569078c4a94302cef4dfeccdf87))
+
+- **cmd**: Clarify interface
+  ([`9fa0585`](https://github.com/anaticulae/queuemo-findings/commit/9fa0585ac2fd3f3ac4d8dc315b877421d1353e38))
+
+- **move**: Move grouping code
+  ([`00ed4ad`](https://github.com/anaticulae/queuemo-findings/commit/00ed4ad79dd56cb8aa529e3223e70b8608a69913))
+
+- **plots**: Sort methods
+  ([`ac5cec3`](https://github.com/anaticulae/queuemo-findings/commit/ac5cec3d62d0f3f1ca0da63a5ef4dd8005c472d6))
+
+- **test**: Move test file
+  ([`41e0089`](https://github.com/anaticulae/queuemo-findings/commit/41e0089ce74632637f1ff07d19e32ea0f3b75692))
+
+### Testing
+
+- **findings**: Add findings list command
+  ([`1a85e73`](https://github.com/anaticulae/queuemo-findings/commit/1a85e7386f62298627fd6c28c12a70d72a280ee9))
+
+- **images**: Test requesting plot
+  ([`e304b45`](https://github.com/anaticulae/queuemo-findings/commit/e304b452b16345479c08b385eaa9c6def8680493))
+
+- **plot**: Render single document
+  ([`d629826`](https://github.com/anaticulae/queuemo-findings/commit/d6298260940fddeecbbc71b49b22e28483727dc4))
+
+- **plot**: Verify plot command
+  ([`5bad5fc`](https://github.com/anaticulae/queuemo-findings/commit/5bad5fcc39e5daf647575e9be29714ff8b33b6ee))
+
+- **plots**: Add test to verify finding selector
+  ([`7ba6aed`](https://github.com/anaticulae/queuemo-findings/commit/7ba6aed241a40bac8d812fb730c56e5a24175bae))
+
+- **publish**: Overwrite loaded version
+  ([`5fe92d9`](https://github.com/anaticulae/queuemo-findings/commit/5fe92d9638fd4d0db4e2380ecbbd80d671da9a5c))
+
+- **publish**: Publish single document
+  ([`d146ccd`](https://github.com/anaticulae/queuemo-findings/commit/d146ccd1a779e735854581b7cc966642d0d375bc))
+
+- **qcon**: Check failing publishing
+  ([`3aa1007`](https://github.com/anaticulae/queuemo-findings/commit/3aa10076abb44ec56b1a628d83b852e7928684d2))
+
+- **refactor**: Simplify plotter test
+  ([`db2b350`](https://github.com/anaticulae/queuemo-findings/commit/db2b350120ece7298f90f5f4e908e83b5aabbc97))
+
+
+## v0.4.0 (2021-02-10)
+
+### Chores
+
+- **requirements**: Add bootstrap
+  ([`9af912e`](https://github.com/anaticulae/queuemo-findings/commit/9af912eaef5d468b8f8f451c0debe7924f161ea1))
+
+- **requirements**: Add flask
+  ([`944f731`](https://github.com/anaticulae/queuemo-findings/commit/944f731327e65683693fd208b08671c706ad9648))
+
+- **requirements**: Add painter package
+  ([`0eefe12`](https://github.com/anaticulae/queuemo-findings/commit/0eefe1293a896cc8898262df92366e0831dfc308))
+
+- **setup**: Add qview package
+  ([`82fe6e5`](https://github.com/anaticulae/queuemo-findings/commit/82fe6e580300c18e7a2debc285645a059adde93a))
+
+### Features
+
+- **API**: Add selected plot provider
+  ([`79945e7`](https://github.com/anaticulae/queuemo-findings/commit/79945e7d6a27cae2d5fe8c09284d757eb062e8b6))
+
+- **API**: Register data API
+  ([`01a4c58`](https://github.com/anaticulae/queuemo-findings/commit/01a4c582c75ebe8c93ae4f96063978dd68b9ea1c))
+
+- **app**: Add basic application structure
+  ([`7be56fb`](https://github.com/anaticulae/queuemo-findings/commit/7be56fbc144e66507143d9194d0d772696d0d291))
+
+- **app**: Add findings and home view
+  ([`5c1c6c9`](https://github.com/anaticulae/queuemo-findings/commit/5c1c6c987a31c2c6d608d0a66a6c0d51016fc307))
+
+- **base**: Add distance to text and div border
+  ([`681dd83`](https://github.com/anaticulae/queuemo-findings/commit/681dd839d93e284446ef936b39d90958d29fe548))
+
+- **base**: Add rpc call
+  ([`08722d6`](https://github.com/anaticulae/queuemo-findings/commit/08722d6d461a8d109819c288581f0d6c6a370bbe))
+
+- **cache**: Collect used finding ids
+  ([`fa2146c`](https://github.com/anaticulae/queuemo-findings/commit/fa2146cedca0c46fb7089adc7671e205e1fb45b0))
+
+- **config**: Add renderer tmp path
+  ([`08e32a3`](https://github.com/anaticulae/queuemo-findings/commit/08e32a30d5b8e7c511550a3ac930337649859a35))
+
+- **finding**: Limit plot size height
+  ([`1c38b07`](https://github.com/anaticulae/queuemo-findings/commit/1c38b078d18eee69c1283e6362a9b0e0adca98f5))
+
+- **findings**: Define plots update API
+  ([`4320c26`](https://github.com/anaticulae/queuemo-findings/commit/4320c2630152cf1fc41911322dbf65478d5fd51a))
+
+- **findings**: Make findings selectable
+  ([`3fe6c5b`](https://github.com/anaticulae/queuemo-findings/commit/3fe6c5bff496684486d2b3c258f73c39cb92151a))
+
+- **findings**: Render list of documents and used versions
+  ([`89fd563`](https://github.com/anaticulae/queuemo-findings/commit/89fd5633c0e01a537cc1a8cdce3504482bd9749e))
+
+- **qview**: Render incoming plots
+  ([`30a4873`](https://github.com/anaticulae/queuemo-findings/commit/30a48735b07db2e987427a9b3b4cc4d677deb931))
+
+- **renderer**: Add finding version plot renderer
+  ([`6f92f9b`](https://github.com/anaticulae/queuemo-findings/commit/6f92f9be0f894dda68bb6518deff49e1f5fdac7b))
+
+- **renderer**: Add legend to plot renderer
+  ([`d98db01`](https://github.com/anaticulae/queuemo-findings/commit/d98db01a1fbf22e0fe6512f8ddf298beb4d6f769))
+
+- **renderer**: Add method to collect and sort available versions
+  ([`48dd9a1`](https://github.com/anaticulae/queuemo-findings/commit/48dd9a169a522dd122c32c3d1bf26667d7371ba6))
+
+- **renderer**: Increase distance between max value and top border
+  ([`e2b788d`](https://github.com/anaticulae/queuemo-findings/commit/e2b788db2518cae6cc02219a78efa4d837cfafc2))
+
+- **renderer**: Link renderer to user call, run in parallel
+  ([`1183383`](https://github.com/anaticulae/queuemo-findings/commit/1183383541cc6fbe662e721a222be4434b823273))
+
+- **renderer**: Use selected versions
+  ([`84a76c7`](https://github.com/anaticulae/queuemo-findings/commit/84a76c7d10e74d8f6321a13e1a3cdcef93699ff5))
+
+- **serialize**: Add multiple filter options
+  ([`5827219`](https://github.com/anaticulae/queuemo-findings/commit/582721912f08c44c6c5c4f0276d6b3bdf6c574ab))
+
+- **serialize**: Skip and log pickling error
+  ([`de13d79`](https://github.com/anaticulae/queuemo-findings/commit/de13d7967005f3d2af457f1b2c2390b43fb8fdf5))
+
+- **view**: Add plot provider
+  ([`200e6b5`](https://github.com/anaticulae/queuemo-findings/commit/200e6b5b2e63287e34085bfdf302b133403b28c0))
+
+### Refactoring
+
+- **findings**: Simplify collector
+  ([`a36de0d`](https://github.com/anaticulae/queuemo-findings/commit/a36de0d2e6f9b13ff5ee1936f96a07750c98af11))
+
+- **test**: Increase test code re usability
+  ([`98cab65`](https://github.com/anaticulae/queuemo-findings/commit/98cab6534b344926d08d10c0910eaa66856e98ee))
+
+### Testing
+
+- **results**: Add sample CachedFindings data
+  ([`0d129c6`](https://github.com/anaticulae/queuemo-findings/commit/0d129c69347670fccc35d67699bc5c83eea852db))
+
+
+## v0.3.0 (2021-02-08)
+
+### Bug Fixes
+
+- **cli**: Rename collect command to publish
+  ([`6866ab3`](https://github.com/anaticulae/queuemo-findings/commit/6866ab348664b3e63f764c42eb87a796836ce3d3))
+
+- **cli**: Use filename instead of tmp name
+  ([`297a72f`](https://github.com/anaticulae/queuemo-findings/commit/297a72f4be3cb25eda687e69ae3058e8779bf0df))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`67ff99e`](https://github.com/anaticulae/queuemo-findings/commit/67ff99ec58b321e3bafba72b7b4df98d6e4885c1))
+
+### Features
+
+- **cli**: Add list command
+  ([`1429011`](https://github.com/anaticulae/queuemo-findings/commit/1429011e5fd0ad7c66f328d9edc90f734ba8b7ed))
+
+### Refactoring
+
+- **publish**: Move publish command to separate module
+  ([`35bc779`](https://github.com/anaticulae/queuemo-findings/commit/35bc779d981fa1289c434576e0b19d52b5033e25))
+
+### Testing
+
+- **cli**: Add test to verify --list command
+  ([`747c764`](https://github.com/anaticulae/queuemo-findings/commit/747c764269fcd4c2903058f171b5c85386f50f4e))
+
+- **refactor**: Introduce cached example fixture
+  ([`78347e2`](https://github.com/anaticulae/queuemo-findings/commit/78347e2b15116ebccc73df3b4421d486bccf71de))
+
+
+## v0.2.0 (2021-02-08)
+
+### Bug Fixes
+
+- **serialize**: Use absolute serialize path
+  ([`444cfc0`](https://github.com/anaticulae/queuemo-findings/commit/444cfc0991288f9dbd7451318ca464f155d9666c))
+
+### Chores
+
+- **requirements**: Add missing utilatest
+  ([`3a09344`](https://github.com/anaticulae/queuemo-findings/commit/3a09344fcdd8be43ac0f6c34c0c8ea90c014a137))
+
+- **requirements**: Add protocol package
+  ([`7711e7f`](https://github.com/anaticulae/queuemo-findings/commit/7711e7f4c8b61a0ec68cbdaf3d2e14cac0e570dd))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f1285d4`](https://github.com/anaticulae/queuemo-findings/commit/f1285d4cf6dc6ac953986eb950e244ae3dc17a2d))
+
+- **setup**: Fix cli path
+  ([`ccc27b5`](https://github.com/anaticulae/queuemo-findings/commit/ccc27b5b8a615d572d1f8788c775683d02dd3496))
+
+### Features
+
+- **cached**: Add config to manage cached global vars
+  ([`7476d90`](https://github.com/anaticulae/queuemo-findings/commit/7476d9025425a1bb61f2e590291e58c9c41c83c7))
+
+- **cached**: Add method to collect cached data from queuemo result
+  ([`38ca57b`](https://github.com/anaticulae/queuemo-findings/commit/38ca57b9a5b7fc1f6a5a2312cc0e955399f1d0c7))
+
+- **cli**: Connect collect command to data logic
+  ([`0e69cba`](https://github.com/anaticulae/queuemo-findings/commit/0e69cbaeccf5777e6cf93bfb8d6f12b4ff98b1ba))
+
+- **serialize**: Enable dumping single document
+  ([`22f9025`](https://github.com/anaticulae/queuemo-findings/commit/22f902547dcdf0d3e1a573d25c9b1b481abb14a1))
+
+### Testing
+
+- **qcon**: Add test to run collector
+  ([`9b74ed2`](https://github.com/anaticulae/queuemo-findings/commit/9b74ed2343b2193a53e8a7d24e6c646ecc0831dc))
+
+- **serialize**: Collect and dump and load document
+  ([`cfae2e6`](https://github.com/anaticulae/queuemo-findings/commit/cfae2e6eee94b06dfb604df7f9fe147dc6acd3f6))
+
+
+## v0.1.0 (2021-02-08)
+
+### Chores
+
+- **requirements**: Add queuemo package to generate test data
+  ([`6d27f74`](https://github.com/anaticulae/queuemo-findings/commit/6d27f74dbc19b7786533ebaa050bf14c65473fe2))
+
+- **requirements**: Add semver
+  ([`51c275e`](https://github.com/anaticulae/queuemo-findings/commit/51c275ef3c3a0bb5727732ca809e23ed57b62676))
+
+- **requirements**: Add test data provider
+  ([`6a0e354`](https://github.com/anaticulae/queuemo-findings/commit/6a0e35412a1acb043ede73bcedd2f7552dbf5c2f))
+
+- **resources**: Add test data generator
+  ([`f819ec6`](https://github.com/anaticulae/queuemo-findings/commit/f819ec612e36fc6604c23711f925a81b5b33f7fd))
+
+### Documentation
+
+- **cached**: Add basic documentation
+  ([`c8dcd54`](https://github.com/anaticulae/queuemo-findings/commit/c8dcd54fcc727a08c8e0f4b01d02490d425831d2))
+
+### Features
+
+- **cached**: Add basic document structure
+  ([`d48a2a3`](https://github.com/anaticulae/queuemo-findings/commit/d48a2a3749e272db37b86ed31f9676d5574d073d))
+
+- **serialize**: Add mechanism to dump and load analyzed projects
+  ([`a16da8b`](https://github.com/anaticulae/queuemo-findings/commit/a16da8b1acb1ff46675a3cd5ec35746c15aba583))
+
+- **serialize**: Add method to dump and load single result
+  ([`8b36670`](https://github.com/anaticulae/queuemo-findings/commit/8b36670c401de900cec23954f70d7a4df1c4cb61))
+
+### Testing
+
+- **serialize**: Filter results by name and version
+  ([`1206d71`](https://github.com/anaticulae/queuemo-findings/commit/1206d712947beccb22efc72b90d2229125735a18))
+
+
+## v0.0.0 (2021-02-07)
+
+- Initial Release
