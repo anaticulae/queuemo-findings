@@ -33,9 +33,8 @@ def pytest_configure():
         shared,
         utilo.join(shared, 'todo'),
         utilo.join(shared, 'ready'),
+        tmp=utilo.join(shared, 'tmp'),
     )
-    # TODO: MOVE AFTER UPGRADING CONFIGS
-    os.environ['SHARED_TMP'] = utilo.join(shared, 'tmp')
     configos.makedirs()
 
 
