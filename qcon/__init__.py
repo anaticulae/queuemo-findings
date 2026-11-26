@@ -7,9 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import importlib.metadata
 import os
 
-__version__ = '0.8.2'
+__version__ = importlib.metadata.version('queuemo-findings')
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'qcon'
