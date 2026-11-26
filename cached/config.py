@@ -16,8 +16,12 @@ import utilo
 
 def root() -> str:
     try:
-        path = configos.env('DEV_CACHED_ROOT')
+        path = configos.env(
+            'DEV_CACHED_ROOT',
+            default='~/.tmp/qcon/dev_cached',
+        )
     except KeyError:
+        # TODO: REMOVE LATER OR CHANGE?
         utilo.error('require global env `DEV_CACHED_ROOT`')
         sys.exit(utilo.FAILURE)
     os.makedirs(path, exist_ok=True)
