@@ -1,0 +1,105 @@
+[build-system]
+requires = [
+    "setuptools>=83.0.0",
+    "wheel>=0.47.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "queuemo-quality"
+version = "1.0.2"
+description = ""
+requires-python = ">=3.12"
+authors = [
+    { name = "Helmut Konrad Schewe", email = "helmutus@outlook.com" },
+]
+dependencies = [
+    "flask-bootstrap>=3.3.7.1,<4.0.0.0",
+    "flask>=3.1.3,<4.0.0",
+    "protoerror>=3.20.4,<4.0.0",
+    "qvlink>=2.15.7,<3.0.0",
+    "semver==3.1.3",
+    "upainter>=1.0.0,<2.0.0",
+    "utilo>=2.112.3,<3.0.0",
+]
+keywords = []
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+]
+license = "MIT"
+license-files = [
+    "LICENSE",
+]
+
+[project.readme]
+file = "README"
+content-type = "text/markdown"
+
+[project.optional-dependencies]
+dev = [
+    "hoverpower==1.8.1",
+    "queuemo>=1.28.1,<2.0.0",
+    "utilotest==1.1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/anaticulae/queuemo-quality"
+Repository = "https://github.com/anaticulae/queuemo-quality"
+
+[project.scripts]
+qcon = "qcon.cli:main"
+qview = "qview.cli:main"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+
+[tool.semantic_release.changelog]
+mode = "init"
+output_format = "md"
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG"
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = [
+    "build",
+    "chore",
+    "ci",
+    "deps",
+    "docs",
+    "feat",
+    "fix",
+    "perf",
+    "refactor",
+    "style",
+    "test",
+]
+default_bump_level = 2
+
+[tool.setuptools.packages.find]
+where = [
+    ".",
+]
+include = [
+    "cached",
+    "qcon",
+    "qcon.cmd",
+    "qview",
+    "qview.api",
+    "qview.api.findings",
+    "qview.view",
+]
+exclude = [
+    "tests*",
+]
+
+[tool.hoverpower]
+packages = [
+    "HOME",
+    "ORDER",
+]
