@@ -10,6 +10,7 @@
 import functools
 import os
 
+import configos
 import hoverpower
 import pytest
 import utilo
@@ -21,6 +22,22 @@ import qview.config
 from tests.cached_ import example  # pylint:disable=W0611
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
+
+os.environ['DEV_CACHED_ROOT'] = utilo.join('~', '.tmp/qcon/dev_cached')
+
+
+def pytest_configure():
+    tmpdir = utilo.tmpdir(qcon.ROOT)
+    shared = utilo.join(tmpdir, 'shared')
+    configos.export(
+        shared,
+        utilo.join(shared, 'todo'),
+        utilo.join(shared, 'ready'),
+    )
+    # TODO: MOVE AFTER UPGRADING CONFIGS
+    os.environ['SHARED_TMP'] = utilo.join(shared, 'tmp')
+    configos.makedirs()
+
 
 PACKAGE = qcon.PROCESS
 hoverpower.setup(qcon.ROOT)
